@@ -1,0 +1,347 @@
+﻿@model Zoughaibandco.ViewModel.Product_VM
+@{
+    ViewBag.Title = "AddEditProduct";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="topContainer">
+    <div class="toolbar">
+        <div class="buttons">
+            <input type="button" class="button" id="addItem" value="Save" onclick="AddEditProduct()">
+        </div>
+    </div>
+</div>
+
+<div>
+    <form>
+
+        <style type="text/css">
+            #flashContent1 {
+                height: 30px;
+                width: 243px;
+                z-index: 0;
+            }
+
+            html, body {
+                height: auto;
+            }
+
+            .colorDiv {
+                float: left;
+                margin-right: 10px;
+                width: 30px;
+                height: 30px;
+            }
+
+            .removeColor {
+                display: none;
+                font-weight: bold;
+                width: 100%;
+                height: 100%;
+                font-size: 23px;
+                opacity: 0.6;
+                text-align: center;
+                background-color: white;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .colorDiv:hover .removeColor {
+                display: block;
+            }
+        </style>
+
+        <fieldset>
+            <div class="editor-label">
+                <label for="ParentId">Select Parent Product</label>
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.ParentId, new SelectList(ViewBag.ParentProductList, "Value", "Text"))
+            </div>
+
+            @Html.HiddenFor(x => x.ProductId)
+            <div class="editor-label">
+                <label for="Title">title</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.Title, new { @class = "date" })
+            </div>
+
+            <div class="editor-label">
+                <label for="ReferenceNO">Reference NO</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.ReferenceNO, new { @class = "date" })
+            </div>
+
+            <div class="editor-label">
+                <label for="Price">Price</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.Price, new { @class = "date", @onkeypress = "return isNumberKey(event);" })
+            </div>
+
+            <div class="editor-label">
+                <label for="PriceDiscounted">Discounted Price</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.PriceDiscounted, new { @class = "date", @onkeypress = "return isNumberKey(event);" })
+            </div>
+
+            <div class="editor-label">
+                <label for="Description">description</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(x => x.Description, new { @class = "ckeditor" })
+            </div>
+
+            <!-- for uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl">Image</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.ProductImg != null)
+                        {
+                            <img src="/Uploads/@Model.ProductImg" width="350px" alt="" id="productImg">
+                            <div id="deleteImg" class="deleteImage" onclick="RemoveImg()"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="productImg">
+                            <div id="deleteImg" class="deleteImage" style="display:none" onclick="RemoveImg()"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="productImg">
+                        <div id="deleteImg" class="deleteImage" style="display:none" onclick="RemoveImg()"></div>
+                    }
+
+                </div>
+                <input id="SingleImage" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End of uploads -->
+
+            <div class="editor-label">
+                <label for="CategoryId">Category</label>
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.CategoryId, new SelectList(ViewBag.Categories, "Value", "Text"))
+            </div>
+
+            <div class="editor-label">
+                <label for="SubCategoryId">Additional Category (if applicable)</label>
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.SubCategoryId, new SelectList(ViewBag.SubCategories, "Value", "Text"))
+            </div>
+
+
+            <div class="editor-label">
+                <label for="color">Colors</label>
+            </div>
+            <div class="editor-field">
+                <label for="productColor">Product Colors</label>
+                <div class="editor-field" style="height: 80px;">
+                    <input class="jscolor" id="colorSelector" value="" autocomplete="off" style="background-image: none; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+                    <button id="addColor" onclick="return false">Add Color</button><br>
+                    <div class="colorsHolder" style="padding-top: 10px;">
+                        @if (Model != null)
+                        {
+                            if (Model.ColorList.Count > 0)
+                            {
+                                foreach (var color in Model.ColorList)
+                                {
+                                    <div class="colorDiv" colorvalue="@color" style="background-color:@color">
+                                        <div class="removeColor">X</div>
+                                    </div>
+                                }
+                                <input name="colorString" id="colorString" value="@string.Join("",Model.ColorList)" type="hidden">
+                            }
+                            else
+                            {
+                                <input name="colorString" id="colorString" value="" type="hidden">
+                            }
+                        }
+                        else
+                        {
+                            <input name="colorString" id="colorString" value="" type="hidden">
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="editor-label">
+                <label for="CollectionId">Collection</label>
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.CollectionId, new SelectList(ViewBag.CollectionsList, "Value", "Text"))
+            </div>
+
+            <div class="editor-label">
+                <label for="IsPublished">Is Published</label>
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(m => m.IsPublished)
+            </div>
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Material</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Material)
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Gold Weight</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.GoldWeight, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Round</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Round, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Marquis</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Marquis, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Ruby</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Ruby, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Sapphire</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Sapphire, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+            </div>
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Emerald</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Emerald, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Fancy</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Fancy, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+            </div>
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Princes</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Princes, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Baguette</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Baguette, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+            </div>
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Triangle</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Triangle, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Pear</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Pear, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+            </div>
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Black</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.black, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Semi-precious</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.semiprecious, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Diamond</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.diamond, new { @onkeypress = "return isNumberKey(event);" })
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+    </form>
+</div>
+<script src="~/Scripts/Admin/Product_Admin.js"></script>
+<script src="~/Scripts/Admin/jscolor.js"></script>
+<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>

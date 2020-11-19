@@ -1,0 +1,130 @@
+﻿<div class="Ecard_banner width-100" style="background-image: url('../../Banners/@ViewBag.Banner')"></div>
+<div class="Ecard_texts width-100">
+    <div class="ecard_texts_holder center_left">
+        <h1 class="CormorantMedium">OFFER A ZOUGHAIB&CO<br />E-GIFT CARD IN JUST A FEW CLICKS!</h1>
+        <article class="ProximaNovaA-Regular">Offer a Zoughaib&ampCo e-gift card in just a few clicks! The e-gift card will be sent directly by email to its recipient. You can choose the amount of the card, the message inside and the date of delivery. The e-gift card can be used as many times as you like and is valid for up to one year from the date of purchase.</article>
+    </div><!--ecard_texts_holder-->
+</div><!--Ecard_texts-->
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: routeURL + '/api/AjaxCall/CheckUser',
+            type: 'GET',
+            success: function (data) {
+                if (data.status == -1) {
+                    alert("Something went wrong, please try again later!");
+                }
+                else if (data.status == 0) {
+                    login();
+                    $(".closepopup").remove();
+                }
+            }
+        });
+    });
+
+</script>
+<div class="RestOfPagesWrapper width-100" style="padding-top:50px;">
+    <div class="createAccountSafe left center_left">
+
+        <form id="ecardForm" name="ecardForm" style="width:100%" onsubmit="return false">
+
+            <div class="ecard_bold_label" id="amtLbl">AMOUNT:</div>
+            <div class="formField formField100 left">
+                <input onclick="if (this.value == 'Between 50 and 5000 USD') this.value = ''" onblur="if (this.value == '') this.value = 'Between 50 and 5000 USD'" value="Between 50 and 5000 USD" name="ecardAmount" id="ecardAmount" type="text" />
+            </div>
+
+            <div>
+                <div class="ecard_bold_label">FOR:</div>
+                <div class="formField left">
+                    <label class="left ProximaNovaA-Light">Email*</label>
+                    <input name="ecardEmailTo" id="ecardEmailTo" type="text" class="ProximaNovaA-Regular left" />
+                </div>
+            </div>
+            <div>
+                <div class="formField right">
+                    <label class="left ProximaNovaA-Light">Confirm Email*</label>
+                    <input id="ConfirmEmail" type="text" class="ProximaNovaA-Regular left" />
+                </div>
+            </div>
+            <div>
+                <div class="formField left">
+                    <label class="left ProximaNovaA-Light">First Name*</label>
+                    <input name="ecardFirstNameTo" id="ecardFirstNameTo" type="text" class="ProximaNovaA-Regular left" />
+                </div>
+            </div>
+            <div>
+                <div class="formField right">
+                    <label class="left ProximaNovaA-Light">Last Name*</label>
+                    <input name="ecardLastNameTo" id="ecardLastNameTo" type="text" class="ProximaNovaA-Regular left" />
+                </div>
+            </div>
+
+            <div>
+                <div class="formField left">
+                    <label class="left ProximaNovaA-Light" id="ecardDateLbl">CHOOSE A DATE*</label>
+                    <input name="ecardDate" id="ecardDate" type="text" class="ProximaNovaA-Regular left" readonly="readonly" />
+                </div>
+            </div>
+
+            <div>
+                <div class="formField right">
+                    <label class="left ProximaNovaA-Light">Phone Number*</label>
+                    <input name="ecardFirstNameTo" id="ecardPhoneNumber" type="text" onkeypress="return isNumber(event);" onkeyup="checkColor();" class="ProximaNovaA-Regular left" />
+                </div>
+            </div>
+
+
+
+            <div>
+                <div class="ecard_bold_label">DELIVERY ADDRESS*</div>
+                <div class="formField formField100 left">
+                    <textarea name="ecardDeliveryaddress" id="ecardDeliveryaddress" class="ProximaNovaA-Regular left"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <div class="ecard_bold_label">SOME SWEET WORDS:</div>
+                <div class="formField formField100 left">
+                    <textarea name="ecardDescription" id="ecardDescription" class="ProximaNovaA-Regular left"></textarea>
+                </div>
+            </div>
+
+            <div class="formButtons left center_left">
+                <input onclick="AddEcard('@HttpContext.Current.Session["UserId"]')" type="submit" class="left ProximaNovaA-Semibold cursor transition" value="BUY GIFT CARD" />
+            </div>
+        </form>
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+@Scripts.Render("~/ECard")
+<script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }        
+        if ($("#ecardPhoneNumber").val().length > 14) {
+            return false;
+        }
+        return true;
+    }
+    function checkColor() {
+        var v = $("#ecardPhoneNumber").val();
+        if (v.length > 14) {
+            if (isNaN(v)) {
+                $("#ecardPhoneNumber").val("");
+            } else {
+                $("#ecardPhoneNumber").parent().find("label").css({ color: "red" });
+                $("#ecardPhoneNumber").val(v.substring(0, 14))
+            }
+            return false;
+        }
+        else {
+            $("#ecardPhoneNumber").parent().find("label").css({ color: "Grey" });
+            return true;
+        }
+    }
+</script>

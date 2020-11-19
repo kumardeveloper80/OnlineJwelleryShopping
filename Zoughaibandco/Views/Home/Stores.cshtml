@@ -1,0 +1,105 @@
+﻿@model List<Zoughaibandco.ViewModel.StoreLocator_VM>
+
+<div class="homepage_banner" id="storpage_banner" style="background-image: url('../../Assets/Images/StoresPage/storeLocatorBann.png');">
+    <div class="storelocatorSVG right center_top"></div>
+</div><!--homepage_banner-->
+
+<div class="storeLocatorWrapper width-100" style="z-index: 1;">
+    <div class="safearea">
+        <div class="storeLocatorLeft left">
+            <div class="storeLocatorLeftCenter center_both left">
+                @if (Model.Count > 0)
+                {
+                    <ul class="StoreRegion center_left left">
+                        @{int i = 0;}
+                        @foreach (var country in Model)
+                        {
+                            if (i == 0)
+                            {
+                                <li class="left upper cursor ProximaNovaA-Regular activeLoc">@country.CountryName</li>
+                            }
+                            else
+                            {
+                                <li class="left upper cursor ProximaNovaA-Regular">@country.CountryName</li>
+                            }
+                            i++;
+                        }
+                    </ul>
+                    <div class="storeRegionLocDiv center_left left">
+                        @foreach (var store in Model)
+                        {
+                            <ul class="storeRegionLoc left center_left">
+                                @{int j = 0;}
+                                @foreach (var storeName in store.StoreAddresses)
+                                {
+                                    if (j == 0)
+                                    {
+                                        <li class="upper ProximaNovaA-Regular cursor activeLoc">@storeName.StoreName</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="upper ProximaNovaA-Regular cursor">@storeName.StoreName</li>
+                                    }
+                                    j++;
+                                }
+                            </ul>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="storeLocatorRight right">
+            <div class="contactUsSlide1Leftcenter center_both left">
+                @if (Model.Count > 0)
+                {
+                    foreach (var store in Model)
+                    {
+                <div class="Country_Stores">
+                    @foreach (var data in store.StoreAddresses)
+                    {
+                        var address = data.StoreName + " " + data.Address + ", " + data.Location; 
+
+                        <div class="City_Stores" map_rel="https://www.google.com/maps?q='@address'&output=embed">
+                            <h4 class="width-100 CormorantSemiBold">@data.StoreName</h4>
+                            <address class="width-100 ProximaNovaA-Regular">
+                                @data.Address<br />
+                                @if (data.Telephone != "")
+                                {
+                                    <span>TEL: </span> @data.Telephone; <br />
+                                }
+                                @if (data.Mobile != "")
+                                {
+                                    <span>MOBILE: </span>@data.Mobile <br /><br /><br />
+                                }
+                                @if (data.Email != "")
+                                {
+                                    <a href="@data.Email">
+                                        @data.Email
+                                    </a>
+                                }
+                            </address>
+                        </div>
+                    }
+                </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mapWrapper width-100">
+    <div class="safearea" style="height:100%">
+        <iframe class="map_iframe" src="" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</div>
+<div class="homepage_centered_section">
+    <div class="safearea">
+        <div class="hbox11" style="margin-bottom: 24px;">
+            <div class="hbox11_holder center_both">
+                <div class="hbox11_quote_blurred">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="hbox11_quote">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="doumit_signature"></div>
+            </div><!--hbox11_holder-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="homepage_banner">
+    <img class="mobile_cover_image_products" src="~/Uploads/damedice.jpg" />
+    <div class="Tarboush_hb_holder center_top">
+        <div class="hb_BannerCollectionName"></div>
+        <a href="@Url.Action("Index","Category",new { Id = 5, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hb_discover_button center_left">
+            <div class="bs_fill transition"></div>
+            <span class="ProximaNovaA-Regular">DISCOVER THE COLLECTION</span>
+        </a><!--hb_discover_button-->
+    </div><!--hb_holder-->
+</div><!--homepage_banner-->
+
+<div class="homepage_centered_section">
+    <div class="safearea">
+        <h2 class="h_section_title">JEWELLERY</h2>
+
+        <div class="hbox1 hm1 transition2">
+            <div class="unveiling_classic transition2 delay1"></div>
+            <a href="@Url.Action("Index","Category",new { Id = 9, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbx1_shop_button delay1 transition">
+                <div class="bs_fill_white transition"></div>
+                <span class="ProximaNovaA-Regular">SHOP THE COLLECTION</span>
+            </a><!--hb_discover_button-->
+        </div><!--hbox1-->
+
+        <div class="hbox2 hm2 transition3">
+            <div class="hbox2_holder center_left">
+                <div class="h_the_wedding_band transition3 delay1"></div>
+                <a href="@Url.Action("Index","Category",new { Id = 9, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbx2_shop_button delay2 transition">
+                    <div class="bs_fill_white transition"></div>
+                    <span class="ProximaNovaA-Regular">SHOP FOR WEDDING BANDS</span>
+                </a>
+            </div><!--hbox2_holder-->
+        </div><!--hbox2-->
+
+
+
+        <div class="hbox3 hm3 animatedItem transition">
+            <div class="hbox3_holder center_left">
+                <div class="h_perfect_gift_title">SHOP FOR THE</div>
+                <div class="h_perfect_gift transition2"></div>
+                <a href="@Url.Action("ECard","Home")" class="hbox3_label transition2 center_left ProximaNovaA-Regular">PURCHASE AN E-GIFT CARD</a>
+                <div class="hbox3_gift transition_gift center_left"></div>
+            </div><!--hbox3_holder-->
+        </div><!--hbox3-->
+
+        <div class="hbox4 hm4" style="background-image:url('../../Assets/Images/IndexPage/hbox4.png')"></div>
+
+        <div class="static_h_collections_rotated">
+            <img class="image_h_collections_rotated" src="~/Assets/Images/IndexPage/homepage_rotated_collections.png" />
+            <a href="@Url.Action("Index","Collection")" class="h_rotated_collections_holder center_both">
+                <div class="h_rotated_collections_line transition1"></div>
+                <div class="h_rotated_collections_title ProximaNovaA-Regular delay1 transition1">DISCOVER OUR</div>
+                <div class="h_rotated_collections delay1 transition2"></div>
+            </a><!--h_rotated_collections_holder-->
+        </div><!--static_h_collections_rotated-->
+
+
+        <h2 class="h_section_title">COLLECTIONS</h2>
+
+        <div class="hbox5 hm5 transition2">
+            <div class="hbox5_red"></div>
+            <div class="hbox5_holder">
+                <div class="h_leather_collection homeLotusCollectionLogo"></div>
+                <div class="h_leather_collection_line"></div>
+                <a href="@Url.Action("Index","Category",new { Id = 4, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbox5_discover_button">discover</a>
+            </div><!--hbox5_holder-->
+        </div><!--hbox5-->
+
+        <div class="hbox6 hm6">
+            <div class="fragrance_collection transition2 delay1" style="background-image:url('../../Assets/Images/IndexPage/crown_collection_home.png')">
+                <div class="hbox5_holder">
+                    <div class="h_leather_collection homeCrownCollectionLogo"></div>
+                    <div class="h_leather_collection_line"></div>
+                    <a href="@Url.Action("Index","Category",new { Id = 3, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbox5_discover_button">discover</a>
+                </div><!--hbox5_holder-->
+            </div><!--fragrance_collection-->
+
+            <div class="watches_collection transition2 delay2">
+                <div class="hbox5_holder">
+                    <div class="h_leather_collection homeArrowCollectionLogo"></div>
+                    <div class="h_leather_collection_line"></div>
+                    <a href="@Url.Action("Index","Category",new { Id = 1, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbox5_discover_button">discover</a>
+                </div><!--hbox5_holder-->
+            </div><!--watches_collection-->
+
+
+
+
+        </div><!--hbox6-->
+
+        <div class="hbox7 hm7 transition2">
+            <div class="hbox5_holder">
+                <div class="h_scarves_collection homeLeavesCollectionLogo"></div>
+                <div class="h_scarves_collection_line"></div>
+                <a href="@Url.Action("Index","Category",new { Id = 6, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbox7_discover_button">discover</a>
+            </div><!--hbox5_holder-->
+        </div><!--hbox7-->
+
+        <div class="hbox8 hm8 transition2 delay1">
+            <div class="hbox5_holder">
+                <div class="h_leather_collection homeClassicCollectionLogo"></div>
+                <div class="h_leather_collection_line"></div>
+                <a href="@Url.Action("Index","Category",new { Id = 2, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbox5_discover_button">discover</a>
+            </div><!--hbox5_holder-->
+        </div><!--hbox8-->
+
+
+        <div class="hbox9 hm9 transition2" style="background-image:url('../../Assets/Images/IndexPage/Perfumes.jpg')">
+            <div class="hbox5_holder">
+                <div class="h_leather_collection ProximaNovaA-Regular">PERFUMES</div>
+                <div class="h_leather_collection_line"></div>
+                <a href="@Url.Action("Index","Category",new { Id = 28, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbox5_discover_button">discover</a>
+            </div>
+        </div>
+
+        <div class="hbox9 hm9 transition2" style="        background-image: url('../../Assets/Images/IndexPage/damediceLookbook1.jpg')">
+            <div class="hbox5_holder">
+                <div class="h_leather_collection ProximaNovaA-Regular">DAME DICE</div>
+                <div class="h_leather_collection_line"></div>
+                <a href="@Url.Action("Index","Category",new { Id = 11, Menu = Zoughaibandco.ViewModel.MenuName.Collection.ToString()})" class="hbox5_discover_button">discover</a>
+            </div>
+        </div>
+
+
+        <div class="hbox9 hm9 transition2">
+            <iframe class="youtubeIframe" width="100%" height="100%" src="https://www.youtube.com/embed/zjfulmMgOrE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="youtubelinecover"></div>
+        </div>
+
+        <div class="hbox10 hm10 transition">
+            <div class="hbox10_holder center_both">
+                <div class="hbox10_newline_label center_left">NEW LINE:</div>
+                <div class="hbox10_lablel ProximaNovaA-Regular transition2">HOME ACCESSORIES</div>
+                <div class="hbox10_collectionGradient transition2"></div>
+                <a href="#" class="hbx10_shop_button transition center_left">
+                    <div class="bs_fill_purple transition"></div>
+                    <span class="ProximaNovaA-Regular">DISCOVER</span>
+                </a><!--hb_discover_button-->
+            </div><!--hbox10_holder-->
+        </div><!--hbox10-->
+
+        <div class="hbox11">
+            <div class="hbox11_holder center_both">
+                <div class="hbox11_quote_blurred"></div>
+                <div class="hbox11_quote"></div>
+                <div class="doumit_signature animatedSignature transition2"></div>
+            </div><!--hbox11_holder-->
+        </div><!--hbox11-->
+
+    </div><!--safearea-->
+</div><!--homepage_centered_section-->
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")

@@ -1,0 +1,51 @@
+﻿@model List<Zoughaibandco.ViewModel.Collection_VM>
+
+<div class="homepage_centered_section">
+    <div class="safearea">
+
+        <div class="breadCrumb right">
+            <span class="breadCrumbTitle ProximaNovaA-Regular">HOME / COLLECTIONS</span>
+        </div>
+        <div class="width-100">
+            @if (Model.Count > 0)
+            {
+                foreach (var collection in Model)
+                {
+                    if (collection.IsAdminAdded)
+                    {
+                        <div class="hbox6 jewlb100 categoryItem" onclick="window.location.href='/Collection/Collection/@collection.CollectionId'">
+                            <div class="fragrance_collection" style="background-image:url('../../Uploads/@collection.ImgName');background-size: cover">
+                                <div class="hbox5_holder">
+                                    <div class="h_leather_collection ProximaNovaA-Regular">@collection.CollectionName</div>
+                                    <div class="h_leather_collection_line"></div>
+                                    <a href="/Collection/Collection/@collection.CollectionId" class="hbox5_discover_button">discover</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="hbox6 jewlb100 categoryItem" onclick="window.location.href='/Collection/@collection.RouteName'">
+                            <div class="fragrance_collection" style="background-image:url('../../Uploads/@collection.ImgName');background-size: cover">
+                                <div class="hbox5_holder">
+                                    <div class="h_leather_collection ProximaNovaA-Regular">@collection.CollectionName</div>
+                                    <div class="h_leather_collection_line"></div>
+                                    <a href="@Url.Action(collection.RouteName,"Collection")" class="hbox5_discover_button">discover</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <div class="hbox11" style="margin-bottom: 24px;">
+            <div class="hbox11_holder center_both">
+                <div class="hbox11_quote_blurred">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="hbox11_quote">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="doumit_signature"></div>
+            </div><!--hbox11_holder-->
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")

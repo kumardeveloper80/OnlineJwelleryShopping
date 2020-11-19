@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/Admin/style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery10.js"></script>
+    <script src="~/Scripts/Admin/jquery.ui.sortable.js"></script>
+    <script src="~/Scripts/Admin/Admin.js"></script>
+    <script type="text/javascript">
+        $(document).keypress(function (e) {
+            if (e.keyCode == 13) {
+                checkLogin();
+            }
+        });
+    </script>
+
+</head>
+<body style="background-color:#161616;">
+    <div class="container" style="background-image:none;">
+
+        <style type="text/css">
+            .container {
+                background-color: #f7f7f7;
+            }
+
+            body {
+                background-color: #f7f7f7;
+            }
+
+            html, body {
+                height: 100%;
+            }
+        </style>
+        <div style="margin-left: auto;margin-right: auto;position: relative;top: 121px; background-size: cover; width: 230px; height: 56px; background-repeat: no-repeat; background-image:url(../../Assets/Images/Others/logo.svg);"></div>
+        <div class="loginContainer">
+            <label class="websiteName">Professional Keypanel</label>
+            <div class="clear"></div>
+            <ul>
+                <li>
+                    <ul>
+                        <li class="left">
+                            <label id="usernameLabel">Username*</label>
+                        </li>
+                        <li class="right">
+                            <input type="text" id="Body_txtUsername" name="Body_txtUsername" />
+                            <span style="visibility: hidden;" id="Body_rfvUSername">*</span>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="left">
+                            <label id="passwordLabel">Password*</label>
+                        </li>
+                        <li class="right">
+                            <input type="password" id="Body_txtPassword" name="Body_txtPassword" />
+                            <span style="visibility:hidden;" id="Body_rfvPassword">*</span>
+                        </li>
+                    </ul>
+                    <ul id="incorrectUserNamePass" style="height:0px;">
+                        <li class="right" style="margin-top:11px;">
+                            <label style="font-size:18px; color:#9f8dde; font-family:Hero;">Incorrect Username or Password!</label>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="left"></li>
+                        <li class="right" style="margin-top:5px;">
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <input value="LOGIN" style="background-color:#d37137; font-size: 18px; color:White; border: 0 none; float: right; height: 40px; margin-top: 25px; width: 150px; cursor:pointer;" type="button" onclick="checkLogin()" />
+            <div class="clear"></div>
+            <label id="bodyContent_lblResult" class="result"></label>
+            <div id="loginLoader"></div>
+        </div>
+    </div>
+</body>
+</html>

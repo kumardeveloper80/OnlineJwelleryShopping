@@ -1,0 +1,93 @@
+﻿@model Zoughaibandco.ViewModel.Client_VM
+@{
+    ViewBag.Title = "AddEditClient";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="topContainer">
+    <div class="toolbar">
+        <div class="buttons">
+        </div>
+    </div>
+</div>
+
+<div>
+
+    @using (Html.BeginForm("SaveClient", "Admin", FormMethod.Post))
+    {
+        <style type="text/css">
+            #flashContent1 {
+                height: 30px;
+                width: 243px;
+                z-index: 0;
+            }
+
+            .disabledInput {
+                background-color: transparent;
+                border: 0px none;
+            }
+
+            html, body {
+                height: auto;
+            }
+
+            .clientPreVerification {
+                margin-top: 0;
+                position: fixed;
+                right: 0px;
+                top: 91px;
+                padding-bottom: 20px;
+                padding-left: 20px;
+                background-color: white;
+            }
+        </style>
+
+        <fieldset>
+
+            @Html.HiddenFor(x=>x.Id)
+
+            <div class="editor-label">
+                <label for="description">User name</label>
+            </div>
+
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.UserName, new { @class = "disabledInput", @readonly = "readonly" })
+            </div>
+
+            <div class="editor-label">
+                <label for="title">First name</label>
+            </div>
+
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "disabledInput", @readonly = "readonly" })
+            </div>
+
+            <div class="editor-label">
+                <label for="title">Last name</label>
+            </div>
+
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.LastName, new { @class = "disabledInput", @readonly = "readonly" })
+            </div>
+
+            <div class="editor-label">
+                <label for="title">Email</label>
+            </div>
+
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.Email, new { @class = "disabledInput", @readonly = "readonly" })
+            </div>
+
+            <div class="editor-label">
+                <label for="isPublished">Client allowed to use platform</label>
+            </div>
+
+            <div class="editor-field">
+                @Html.CheckBoxFor(x => x.AllowToUsePlateform)
+            </div>
+            <p>
+                <input type="submit" class="buttonSave" value="Save">
+            </p>
+        </fieldset>
+    }
+</div>

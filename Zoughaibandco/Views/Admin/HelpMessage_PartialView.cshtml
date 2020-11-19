@@ -1,0 +1,26 @@
+﻿@model List<Zoughaibandco.ViewModel.Contact_VM>
+
+<div>
+    @if (Model.Count > 0)
+    {
+        <div class="list">
+            <ul id="sortable" class="ui-sortable">
+                @foreach (var helpmsg in Model)
+                {
+                <li>
+                    @helpmsg.FirstName &nbsp; @helpmsg.LastName
+
+                    @if (helpmsg.IsRead != true)
+                    {
+                        <b style="color:red;"> &nbsp;Not Read</b>
+                    }
+
+                    <a style="position:absolute; right:15px;" href="javascript:DeleteHelpMsg('@helpmsg.Id')">Delete</a>
+                    <a style="position:absolute; right:85px;" href="@Url.Action("EditHelpMessage","Admin",new { HelpId = helpmsg.Id})">Edit</a>
+                    <div class="smallLoader"></div>
+                </li>
+                }
+            </ul>
+        </div>
+    }
+</div>

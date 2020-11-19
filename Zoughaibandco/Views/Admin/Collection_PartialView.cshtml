@@ -1,0 +1,20 @@
+﻿@model List<Zoughaibandco.ViewModel.Collection_VM>
+
+@if (Model != null)
+{
+    <ul id="sortable" class="ui-sortable" tablename="Collection">
+
+        @if (Model.Count > 0)
+        {
+            foreach (var collection in Model)
+            {
+                <li>
+                    @collection.CollectionName
+                    <a style="position:absolute; right:75px;" href="javascript:if (confirm('Are you sure you want to delete this collection with all related information ?')) { DeleteCollection('@collection.CollectionId') }">Delete</a>
+                    <a style="position:absolute; right:15px;" href="@Url.Action("AddEditCollection", "Admin", new { CollectionId = collection.CollectionId })">Edit</a>
+                    <div class="smallLoader"></div>
+                </li>
+            }
+        }
+    </ul>
+}

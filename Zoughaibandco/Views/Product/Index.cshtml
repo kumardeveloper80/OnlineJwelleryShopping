@@ -1,0 +1,366 @@
+﻿@model Zoughaibandco.ViewModel.Product_VM
+
+
+<style type="text/css">
+
+
+
+    .square {
+        float: left;
+        position: relative;
+        width: 25%;
+        padding-bottom: 25%; /* = width for a 1:1 aspect ratio */
+        margin: 1.66%;
+        background-color: #1E1E1E;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .content {
+        position: absolute;
+        height: 90%; /* = 100% - 2*5% padding */
+        width: 90%; /* = 100% - 2*5% padding */
+        padding: 5%;
+    }
+
+    .table {
+        display: table;
+        width: 100%;
+        height: 100%;
+        border: 1px dotted black;
+    }
+
+    .table-cell {
+        display: table-cell;
+        vertical-align: bottom;
+        text-align: center;
+        font-weight: bold;
+        font-size: 13px;
+    }
+    /*  For list */
+    ul {
+        text-align: left;
+        margin: 5% 0 0;
+        padding: 0;
+        list-style-position: inside;
+    }
+
+    li {
+        margin: 0 0 0 5%;
+        padding: 0;
+    }
+
+
+    /*  For responsive images */
+
+    .content .rs {
+        width: auto;
+        height: auto;
+        max-height: 90%;
+        max-width: 100%;
+    }
+    /*  For responsive images as background */
+
+    .bg {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover; /* you change this to "contain" if you don't want the images to be cropped */
+        color: #fff;
+    }
+</style>
+
+@if (Model != null)
+{
+    <div class="width-100 productListingWrapper">
+        <div class="safeareaProducts left center_left" style="overflow-y: hidden;">
+            <div class="breadCrumb right">
+                <span class="breadCrumbTitle ProximaNovaA-Regular">
+                    <a style="color:#979797;" href="@Url.Action("Index","Home", null)">HOME</a>
+                    @if (Model.CollectionName != null)
+                    {
+                        <spna> / </spna><a style="color:#979797" href="@Url.Action("Index","Category",new { Id = Model.CollectionId, Menu = "Collection" })">@Model.CollectionName.ToUpper()</a>
+                    }
+                </span>
+            </div>
+
+            <div class="backNextDiv width-100">
+                @if (Model.CollectionName != null)
+                {
+                    <a href="@Url.Action("Index","Category",new { Id = Model.CollectionId, Menu = "Collection" })" class="backNextDivback left upper ProximaNovaA-Light">back to collection</a>
+                    if (Model.NextProductId > 0)
+                    {
+                        <a href="@Url.Action("Index","Product",new { Id = Model.NextProductId})" class="backNextDivnext right upper ProximaNovaA-Light">next product</a>
+                    }
+                }
+            </div>
+
+            <div class="productDetailsDiv width-100">
+                <div class="productDetailsLeft left">
+                    <div class="productDetailsLeftMainIMG width-100" style="background-image:url('../../Uploads/@Model.ProductImg')">
+                    </div>
+                    <div class="productDetailsSlide width-100">
+                        <div class="productDetailsSlideHolder left center_left">
+                            <ul class="left"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productDetailsRight right">
+                    <div class="productTitleDiv width-100">
+                        <h2 class="left upper ProximaNovaA-Regular">@Model.Title</h2>
+                        <span class="productTitlePrice right Arapey-Italic">$ @Model.Price</span>
+                    </div>
+                    <div class="productDetailsInfo width-100">
+                        <h4 class="productInfoTitle width-100 upper CormorantRegular">DESCRIPTION & DETAILS</h4>
+                        <article class="width-100 ProximaNovaA-Light">
+
+                            @if (Model.ReferenceNO != null && Model.ReferenceNO != "")
+                            {
+                                <p>
+                                    Reference Number : @Model.ReferenceNO
+                                </p>
+                                <br />
+                            }
+
+                            <p>
+                                @*@Model.Description*@
+                                @(new HtmlString(Model.Description.ToString()))
+                            </p>
+                            <br />
+
+                            @if (Model.Material != "")
+                            {
+                                <p class="productmeta">Materials : @Model.Material</p>
+                            }
+
+                            @if (Model.GoldWeight > 0)
+                            {
+                                <p class="productmeta">Gold Weight : @Model.GoldWeight gr.</p>
+                            }
+
+                            @if (Model.diamond > 0)
+                            {
+                                <p class="productmeta">Diamond : @Model.diamond</p>
+                            }
+                            @if (Model.Round > 0)
+                            {
+                                <p class="productmeta">Round diamond : @Model.Round</p>
+                            }
+                            @if (Model.Marquis > 0)
+                            {
+                                <p class="productmeta">Marquise diamond : @Model.Marquis</p>
+                            }
+                            @if (Model.Fancy > 0)
+                            {
+                                <p class="productmeta">Fancy diamond : @Model.Fancy</p>
+                            }
+                            @if (Model.Princes > 0)
+                            {
+                                <p class="productmeta">Princess diamond : @Model.Princes</p>
+                            }
+
+                            @if (Model.Baguette > 0)
+                            {
+                                <p class="productmeta">Baguette diamond : @Model.Baguette</p>
+                            }
+                            @if (Model.Triangle > 0)
+                            {
+                                <p class="productmeta">Triangle diamond : @Model.Triangle</p>
+                            }
+
+                            @if (Model.Pear > 0)
+                            {
+                                <p class="productmeta">Pear diamond : @Model.Pear</p>
+                            }
+                            @if (Model.black > 0)
+                            {
+                                <p class="productmeta">Black diamond : @Model.black</p>
+                            }
+                            @if (Model.Ruby > 0)
+                            {
+                                <p class="productmeta">Ruby : @Model.Ruby</p>
+                            }
+                            @if (Model.Sapphire > 0)
+                            {
+                                <p class="productmeta">Sapphire : @Model.Sapphire</p>
+                            }
+                            @if (Model.Emerald > 0)
+                            {
+                                <p class="productmeta">Emerald : @Model.Emerald</p>
+                            }
+                            @if (Model.semiprecious > 0)
+                            {
+                                <p class="productmeta">Semi precious : @Model.semiprecious</p>
+                            }
+                        </article>
+
+                        @if (Model.ProductColors.Count > 0)
+                        {
+                            <h4 class="productInfoTitle width-100 upper CormorantRegular">color</h4>
+
+                            <div class="colorPanelContainer width-100">
+                                @foreach (var color in Model.ProductColors)
+                                {
+                                    <div class="colorPanelDiv left" style="border-color: #000;">
+                                        <div class="left center_both transition" style="background-color: @color.ColorName; border:1px solid #000;"></div>
+                                    </div>
+                                }
+                            </div>
+                        }
+
+                        @if (Model.ChildList.Count > 0)
+                        {
+                            <div class="ProductButtonsDiv width-100" style="clear:both">
+
+                                @foreach (var child in Model.ChildList)
+                                {
+
+                                    <div onclick="jumptoproduct(@child.ProductId)" class="square bg" style="background-image:url('../../Uploads/@child.ProductImg')">
+                                        <div class="content">
+                                            <div class="table">
+                                                <div class="table-cell ProximaNovaA-Regular" style="color:#d27037;">
+                                                    @child.Title
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                }
+                            </div>
+                        }
+
+
+
+                        <div class="ProductButtonsDiv width-100">
+
+                            <div class="productShareDiv transition">
+                                <ul class="left center_left">
+                                    <li class="fb"><a href="javascript:return false" class="absolute"></a></li>
+                                    <li class="twit"><a href="javascript:return false" class="absolute"></a></li>
+                                    <li class="pin"><a href="javascript:return false" class="absolute"></a></li>
+                                    <li class="whatsapp"><a href="javascript:return false" class="absolute"></a></li>
+                                </ul>
+                            </div>
+
+                            <div class="shareButton left cursor">
+                                <a href="javascript:;" class="hb_discover_button center_left">
+                                    <div class="bs_fill transition"></div>
+                                    <span class="ProximaNovaA-Regular">SHARE</span>
+                                </a>
+                            </div>
+
+                            <div onclick="AddItemToWishlist(@Model.ProductId)" class="wishlistButton left cursor">
+                                <a href="javascript:;" class="hb_discover_button center_left">
+                                    <div class="bs_fill transition"></div>
+                                    <span class="ProximaNovaA-Regular">ADD TO WISHLIST</span>
+                                </a>
+                            </div>
+
+                            <div onclick="AddItemToBag(@Model.ProductId)" class="addToBagButton left cursor">
+                                <a href="javascript:;" class="hb_discover_button center_left">
+                                    <div class="bs_fill transition"></div>
+                                    <span class="ProximaNovaA-Regular">ADD TO BAG</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+<script src="~/Scripts/Product.js"></script>
+<script>
+
+    function AddItemToBag(ProductId) {
+        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var GuestUserId = '@HttpContext.Current.Session["GuestId"]';
+            if (GuestUserId.trim() != "") {
+                AddItemToGuestCart(GuestUserId, ProductId);
+            }
+        }
+        else {
+            var UserId = ' @HttpContext.Current.Session["UserId"] ';
+            if (UserId.trim() != "") {
+                AddItemToCart(UserId, ProductId);
+            }
+        }
+    }
+
+    function AddItemToWishlist(ProductId) {
+        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var GuestUserId = '@HttpContext.Current.Session["GuestId"]';
+            if (GuestUserId.trim() != "") {
+                AddToGuestWishList(GuestUserId, ProductId);
+            }
+        }
+        else {
+            var UserId = ' @HttpContext.Current.Session["UserId"] ';
+            if (UserId.trim() != "") {
+                AddToWishList(UserId, ProductId);
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        //Function for opne the Share-Pop-up (social media)
+        $(".shareButton").click(function () {
+            if ($(this).hasClass("shareIconOpened")) {
+                $(this).removeClass("shareIconOpened");
+                $(this).parent().find(".productShareDiv").css({ "display": "none" })
+            }
+            else {
+                $(this).addClass("shareIconOpened");
+                $(this).parent().find(".productShareDiv").css({ "display": "block" })
+            }
+        });
+
+
+
+
+        var url = location.href;
+
+        debugger;
+        // call share functions links
+        $(".fb").click(function () {
+            fbshareCurrentPage(url);
+
+            //fbshareCurrentPage('http://Zoughaib.loading-labs.com/Item/493/354559');
+        });
+        $(".twit").click(function () {
+            //TweetCurrentPage('http://Zoughaib.loading-labs.com/Item/493/354559');
+            TweetCurrentPage(url);
+        });
+        $(".pin").click(function () {
+           // PinterestShareCurrentPage('http://Zoughaib.loading-labs.com/Item/493/354559');
+            PinterestShareCurrentPage(url);
+        });
+        $(".whatsapp").click(function () {
+            //WhatsappCurrentPage('http://Zoughaib.loading-labs.com/Item/493/354559');
+            WhatsappCurrentPage(url);
+        });
+
+        $(".colorPanelDiv:first-child").addClass("selectedColor")
+
+        $(".colorPanelDiv").click(function () {
+            var currentElement = $(this);
+            $(".selectedColor").removeClass("selectedColor");
+            currentElement.addClass("selectedColor");
+        });
+
+
+    });
+
+    function jumptoproduct(id) {
+        window.location.href = "/product/index/" + id;
+    }
+
+</script>

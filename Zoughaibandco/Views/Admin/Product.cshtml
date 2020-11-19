@@ -1,0 +1,120 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<div class="topContainer">
+    <div class="toolbar">
+        <div class="buttons">
+            <input type="button" class="button" id="importItem" data-toggle="modal" data-target="#myModal" value="Import" style="margin-right:5px;">
+            <input type="submit" class="button" id="addItem" value="Add" onclick="window.location = '/Admin/AddEditProduct'">
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Import Products</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="file" name="FileUpload" accept=".xls,.xlsx" id="ImportProductFile" style="width:100%;padding:10px;" />
+                    <br />
+                    <a href="~/Templates/ImportProductTemplate.xlsx" download style="color:Highlight;padding: 10px;font-size: 12px;">Click here to download template.</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="UploadFile();">ok</button>
+                    <button id="cancel-btn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="list">
+    <div class="filtering" style="color: #d37137; height: 20px; margin-top: 20px; margin-bottom: 19px; padding-left: 50px;">
+        <input id="searchTxt" placeholder="Search by product title, reference no"
+               style="width: 400px; margin-left: -11px; float: left; color: #d37137; font-family: Verdana; height: 22px; line-height: 20px; padding-left: 10px; padding-right: 70px; background-repeat: no-repeat; background-position: 450px center; border: 1px solid rgb(221, 221, 221);background-image:url(../../Assets/Images/Others/searchAdminIcon.png)">
+        <div style="float: right; margin-right: 55px; cursor: pointer;" onclick="ProductList('@Zoughaibandco.ViewModel.ProductFilter.category.ToString()')">Categories</div>
+        <div style="float: right; margin-right: 30px; cursor: pointer;" onclick="ProductList('@Zoughaibandco.ViewModel.ProductFilter.none.ToString()')">None</div>
+        <div style="float: right; margin-right: 30px; cursor:default;"><u>Filter by: </u></div>
+    </div>
+
+    <div id="productListDiv" class="list"></div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/Scripts/Admin/Product_Admin.js"></script>
+
+<script type="text/javascript">
+    
+    function UploadFile() {
+        if (document.getElementById("ImportProductFile").files.length != 0) { 
+            
+            var files = document.getElementById("ImportProductFile").files[0];
+            var extension = files.name.split('.')[1];
+
+            if (extension == "xls" || extension == "xlsx") {
+                var formData = new FormData();
+                formData.append("covertFile", files);
+                $.ajax({
+                    type: "POST",
+                    url: "/api/AdminApi/ImportProduct",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    success: function (result) {
+                        if (result.status == 1) {
+                            alert("Records Inserted Successfully.");  
+                            $('#cancel-btn').click();
+                        } else {
+                            alert("Something went Wrong.");
+                        }
+                    },
+                    error: function (e) {
+                        alert("Something went Wrong.");
+                    }
+                });
+                $('#ImportProductFile').val(""); 
+            }
+            else {
+                alert("please select xls and xlsx file only");   
+            }
+        } else {
+            alert("please select file.");
+        }
+        
+    }
+</script>
+<script>
+    $(document).ready(function () {
+
+        if (localStorage.getItem("link") != null) {
+            $("#" + localStorage.getItem("link")).addClass('selectedMenu');
+            fnClear();
+        }
+        else {
+            $("#Product").addClass('selectedMenu');
+        }
+
+        $('.liMenu').mouseover(function () {
+            if ($(this).attr("class") != "liMenu selectedMenu") {
+                $(this).addClass('selectedMenu').removeClass('liMenu').mouseout(function () {
+                    $(this).addClass('liMenu').removeClass('selectedMenu');
+                });
+            }
+        });
+    });
+    function fnClear() {
+        localStorage.clear();
+    }
+</script>

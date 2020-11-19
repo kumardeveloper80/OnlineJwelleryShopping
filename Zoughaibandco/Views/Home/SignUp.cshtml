@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+<div class="RestOfPagesWrapper width-100">
+    <div class="createAccountSafe left center_left">
+        <h2 class="width-100 center upper CormorantRegular">create an account</h2>
+        <h3 class="width-100 center upper ProximaNovaA-Light">YOUR EMAIL WILL BE USED TO LOGIN</h3>
+
+        <form id="signupForm" name="signupForm" onsubmit="return false" class="width-100">
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light">First Name*</label>
+                <input id="firstName" name="firstName" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light">Last Name*</label>
+                <input id="lastName" name="lastName" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light">Email*</label>
+                <input id="email" name="email" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light">Confirm Email*</label>
+                <input id="ConfirmEmail" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light">Password (5 - 20 characters)*</label>
+                <input id="password" name="password" type="password" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light">Confirm Password (5 - 20 characters)*</label>
+                <input id="ConfirmPassword" type="password" class="ProximaNovaA-Regular left" />
+            </div>
+            <span class="right ProximaNovaA-Light clear">You can save items to your Zoughaib & Co. account.</span>
+            <div class="formButtons left center_left">
+                <input type="reset" class="left ProximaNovaA-Semibold cursor" value="CANCEL" />
+                <input onclick="signup()" type="submit" class="left transition ProximaNovaA-Semibold cursor" value="SUBMIT" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+<script src="~/Scripts/SignUp.js"></script>
+<script type="text/javascript">
+    accessAccount();
+     function accessAccount() {
+         var UserId = ' @HttpContext.Current.Session["UserId"] ';
+         if (UserId > 0) {
+             getUser();
+        }
+    }
+</script>

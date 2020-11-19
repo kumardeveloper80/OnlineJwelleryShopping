@@ -1,0 +1,116 @@
+﻿@model Zoughaibandco.ViewModel.ProductCartGuest_VM
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="RestOfPagesWrapper width-100">
+    <div class="yourBagSafe left center_left">
+        <h2 class="width-100 center upper CormorantRegular">your bag</h2>
+        <h3 class="width-100 center upper ProximaNovaA-Light">CHECK THE ITEMS YOU BOUGHT AND MANAGE THEM</h3>
+
+        @if (Model != null)
+        {
+            <div class="wishlistWrapper width-100">
+
+                @foreach (var data in Model.productGuestCartDetails_VMs)
+                {
+                    <div id="@data.CartDetailsId" class="cartItemsWrapper width-100">
+                        <div class="cartItemsDiv width-100">
+                            <div class="cartItemIMGHolder left center_top" style="background-image: url(../../Uploads/@data.ProductImage)">
+                            </div>
+                            <span class="cartItemTitle left center_top ProximaNovaA-Regular upper">@data.Title</span>
+                            <div class="cartItemQTY left center_top">
+                                <span class="lessQTY left cursor" onclick="lessQty(@data.CartDetailsId)"></span>
+                                <span class="cartItemCurrentQTY left ProximaNovaA-Regular" id="@{@data.CartDetailsId}span">@data.Quantity</span>
+                                <span class="moreQTY left cursor" onclick="moreQTY(@data.CartDetailsId)"></span>
+                            </div>
+                            <span class="cartItemPrice left center_top Arapey-Italic">$ @data.TotalPrice</span>
+                            <span class="cartItemRemove left center_top cursor" onclick="cartProductRemove(@data.CartDetailsId)"></span>
+                        </div>
+                    </div>
+                }
+
+                <div class="totalAmount right">
+                    <span class="totalSpan left upper ProximaNovaA-Regular">total</span>
+                    <span class="totalPrice right upper Arapey-Italic">$ @ViewBag.GrandTotal</span>
+                </div>
+
+                <div class="formButtons left center_left">
+                    <span onclick="emptyCard(@Model.CartId)" class="cancelWishlist left ProximaNovaA-Semibold cursor upper">cancel</span>
+                    @*<a href="@Url.Action("Index","Checkout")" class="gotoCheckout left ProximaNovaA-Semibold cursor upper transition">checkout</a>*@
+                    <a href="javascript:login(1);" class="gotoCheckout left ProximaNovaA-Semibold cursor upper transition">checkout</a>
+                </div>
+            </div>
+            <div id="NoCart" class="NoProducts" style="display:none;">No products available in your cart.</div>
+            }
+            else
+            {
+                
+            <div class="NoProducts">&nbsp;<br />&nbsp;<br />&nbsp;<br />No products available in your cart.</div>
+        }
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+<script src="~/Scripts/Product.js"></script>
+<script>
+    $(document).ready(function () {
+        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var CartCount = '@HttpContext.Current.Session["CartCount"]';
+            var WishCount = '@HttpContext.Current.Session["WishCount"]';
+            $("#GuestCartItemsCount").html(CartCount);
+            $("#GuestWidhItemsCount").html(WishCount);
+        }
+        else {
+            window.location = "/Product/Cart";
+        }
+    });
+    function emptyCard(CartId) {
+        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var GuestUserId = '@HttpContext.Current.Session["GuestId"]';
+            if (GuestUserId.trim() != "") {
+                GuestEmptyToCard(GuestUserId, CartId);
+            }
+        }
+    }
+
+    function cartProductRemove(CartDetailsId) {        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var GuestUserId = '@HttpContext.Current.Session["GuestId"]';
+            if (GuestUserId.trim() != "") {
+                GuestCartProductToRemove(GuestUserId, CartDetailsId);
+            }
+        }        
+    }
+
+    function lessQty(CartDetailsId) {
+        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var GuestUserId = '@HttpContext.Current.Session["GuestId"]';
+            if (GuestUserId.trim() != "") {
+                var CurrentQTY = $("#" + CartDetailsId + "span").text();
+                if (CurrentQTY != 1) {
+                    CurrentQTY--;
+                    GuestUpdateToCartQty(GuestUserId, CartDetailsId, CurrentQTY);
+                }
+            }
+        }        
+    }
+
+    function moreQTY(CartDetailsId) {
+        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var GuestUserId = '@HttpContext.Current.Session["GuestId"]';
+            if (GuestUserId.trim() != "") {
+                var CurrentQTY = $("#" + CartDetailsId + "span").text();
+                CurrentQTY++;
+                GuestUpdateToCartQty(GuestUserId, CartDetailsId, CurrentQTY);
+            }
+        }        
+    }
+
+</script>

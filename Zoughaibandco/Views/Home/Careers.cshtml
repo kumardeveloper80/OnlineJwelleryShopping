@@ -1,0 +1,54 @@
+﻿<div class="RestOfPagesWrapper width-100">
+    <div class="createAccountSafe left center_left">
+        <h2 class="width-100 center upper CormorantRegular">CAREERS</h2>
+        <h3 class="width-100 center upper ProximaNovaA-Light want_to_work_with_us">WANT TO WORK WITH US <span>?</span> ATTACH YOUR CV BELOW</h3>
+        @*id="careerForm" name="careerForm"*@
+        <div class="width-100">
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light" id="firstNameLabel">First Name*</label>
+                <input type="text" id="firstName" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light" id="lastNameLabel">Last Name*</label>
+                <input type="text" id="lastName" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light" id="emailLabel">Email*</label>
+                <input type="text" id="email" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light">Phone Number</label>
+                <input type="text" id="phone" class="ProximaNovaA-Regular left" />
+            </div>
+
+            <div class="formField formField100 left">
+                <label class="left ProximaNovaA-Light">Address</label>
+                <input type="text" id="address" class="ProximaNovaA-Regular left" />
+            </div>
+
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light">Position</label>
+                <input type="text" id="position" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light">Attach CV</label>
+                <input class="fileex" type="file" id="fileex" name="myfileEx">
+                <input type="text" value="" id="fileuploadtxt" class="fileuploadtxt ProximaNovaA-Regular left">
+            </div>
+
+            <div class="formField formField100 left">
+                <label class="left ProximaNovaA-Light">Tell us about yourself</label>
+                <textarea id="aboutUs" class="ProximaNovaA-Regular left"></textarea>
+            </div>
+
+            <div class="formButtons left center_left">
+                <input type="reset" class="left ProximaNovaA-Semibold cursor" value="CANCEL" onclick="onCancel()"/>
+                <input type="submit" class="left ProximaNovaA-Semibold cursor transition" value="SUBMIT" onclick="onSubmit()"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+@Scripts.Render("~/Careers")

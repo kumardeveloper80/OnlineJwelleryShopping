@@ -1,0 +1,103 @@
+﻿<div class="collectionsSLide1 width-100" style="background-image: url('../../Assets/Images/AllCollection/BridalCollectionLookbookGradient.png')">
+    <div class="safeareaProducts left center_left">
+        <div class="breadCrumb breadCrumbCollections right">
+            <span class="breadCrumbTitle ProximaNovaA-Regular bridalcolor_orange"><a style="color:#8c4e03" href="@Url.Action("Index","Home", null)">HOME</a> / <a style="color:#8c4e03" href="@Url.Action("Index","Collection", null)">COLLECTIONS</a> / BRIDAL COLLECTION</span>
+        </div>
+        <div class="collectionsimg1 left" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook1.png')"></div>
+        <div class="collectionsSlide1Content center_top">
+            <span class="lookbook upper width-100 ProximaNovaA-Regular bridalcolor_orange">lookbook</span>
+            <h2 class="width-100 upper bridalcollectionSVG"></h2>
+            <a href="" class="right upper ProximaNovaA-Light bridalcolor_orange">DOWNLOAD LOOKBOOK</a>
+            <a style="color:#8c4e03" class="shopCollectionB1 right upper ProximaNovaA-Light" href="@Url.Action("Index","Category",new { Id = ViewBag.Id, Menu = "Collection" })"><div class="bs_fill_white_collections transition"></div>Shop the collection</a>
+        </div>
+    </div>
+</div>
+<div class="collectionsSlide2 width-100">
+    <div class="safearea">
+        <div class="BridalSlide2Left left">
+            <div class="collectionsSlide2LeftIMG_bridal bridalLookbook110w anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook3.png');"></div>
+        </div>
+        <div class="BridalSlide2Right right">
+            <div class="BridalSlide2RightIMG anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook2.png')"></div>
+            <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/bridalLookbook4.png" />
+        </div>
+    </div><!--safearea-->
+</div>
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <div class="BridalSlide2Left left">
+            <div class="BridalSlide2LeftIMG bridalLookbook105w anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook5.png');"></div>
+        </div>
+        <div class="BridalSlideRight right">
+            <div class="bridalCollectionText1 anim_opacity0 transition2">
+                <article class="left center_left ProximaNovaA-Regular">
+                    For every bride-to-be. This collection was designed to win the hearts of many. Whether you are a modern bride, a classic bride, a bride that favors glamour or a bride that looks for originality and novelty, you are sure to find the perfect set or ring for you. Say yes with Zoughaib & Co.
+                </article>
+            </div><!--bridalCollectionText1-->
+            <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/bridalLookbook6.png" />
+        </div><!--BridalSlide2Right-->
+        <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/bridalLookbook7.png" />
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <div class="BridalSlideLeft left">
+            <div class="BridalSlide2LeftIMG bridalLookbook105w anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook8.png');"></div>
+        </div>
+        <div class="BridalSlideRight right">
+            <div class="BridalSlide2LeftIMG anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook9.png');"></div>
+        </div><!--BridalSlide2Right-->
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/bridalLookbook10.png" />
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/bridalLookbook11.png" />
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <div class="BridalSlideLeft left">
+            <div class="BridalSlide2LeftIMG bridalLookbook105w anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook12.png');"></div>
+        </div>
+        <div class="BridalSlideRight right">
+            <div class="BridalSlide2LeftIMG anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/bridalLookbook13.png');"></div>
+        </div><!--BridalSlide2Right-->
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/bridalLookbook14.png" />
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="homepage_centered_section">
+    <div class="safearea">
+        <div class="collectionCheckContainer width-100">
+            @if (ViewBag.Previous != null)
+            {
+                <a href="@Url.Action(Convert.ToString(ViewBag.Previous),"Collection")" class="collectionPrev left upper CormorantRegular">previous collection</a>
+            }
+
+            @if (ViewBag.Next != null)
+            {
+                <a href="@Url.Action(Convert.ToString(ViewBag.Next),"Collection")" class="collectionPrev right upper CormorantRegular">next collection</a>
+            }
+            <a href="@Url.Action("Index","Category",new { Id = ViewBag.Id, Menu = "Collection" })" class="collectionShop center_left upper CormorantRegular"><div class="bs_fill_dark_orange_collections transition"></div>shop the collection</a>
+            <a href="" class="collectionDownload center_left left upper CormorantRegular">download lookbook</a>
+        </div>
+        <div class="hbox11" style="margin-bottom: 24px;">
+            <div class="hbox11_holder center_both">
+                <div class="hbox11_quote_blurred">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="hbox11_quote">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="doumit_signature"></div>
+            </div><!--hbox11_holder-->
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")

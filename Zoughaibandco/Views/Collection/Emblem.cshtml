@@ -1,0 +1,81 @@
+﻿<div class="collectionsSLide1 width-100" style="background-image: url('../../Assets/Images/AllCollection/EmblemCollectionLookbookGradient.png')">
+    <div class="safeareaProducts left center_left">
+        <div class="breadCrumb breadCrumbCollections right">
+            <span class="breadCrumbTitle ProximaNovaA-Regular"><a style="color:white" href="@Url.Action("Index","Home", null)">HOME</a> / <a style="color:white" href="@Url.Action("Index","Collection", null)">COLLECTIONS</a> / THE EMBLEM COLLECTION</span>
+        </div>
+        <div class="collectionsimg1 arrowcollectionsimg1 left" style="background-image: url('../../Assets/Images/AllCollection/EmblemLookbook1.png')"></div>
+        <div class="collectionsSlide1Content center_top">
+            <span class="lookbook upper width-100 ProximaNovaA-Regular">lookbook</span>
+            <h2 class="width-100 upper emblemcollectionSVG"></h2>
+            <a href="" class="right upper ProximaNovaA-Light">DOWNLOAD LOOKBOOK</a>
+            <a class="shopCollectionB1 right upper ProximaNovaA-Light" href="@Url.Action("Index","Category",new { Id = ViewBag.Id, Menu = "Collection" })"><div class="bs_fill_white_collections transition"></div>Shop the collection</a>
+        </div>
+    </div>
+</div>
+<div class="collectionsSlide2 width-100">
+    <div class="safearea">
+        <div class="ArrowSlide2Left">
+            <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook2.png" />
+        </div>
+        <div class="ArrowSlide2Right right">
+            <img class="lookbook_w100_image EmblemLookbook3 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook3.png" />
+        </div>
+        <img class="lookbook_w100_image EmblemLookbook4 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook4.png" />
+    </div><!--safearea-->
+</div><!--collectionsSlide2-->
+<div class="collectionsSlide2 width-100">
+    <div class="safearea">
+        <div class="ArrowSlide2Left">
+            <img class="lookbook_w100_image EmblemLookbook5 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook5.png" />
+        </div><!--ArrowSlide2Left-->
+
+        <div class="ArrowSlide2Right right">
+            <div class="EmblemCollectionText1 center_left anim_opacity0 transition2">
+                <article class="left center_left ProximaNovaA-Regular">
+                    Our most iconic collection, the Emblem Collection features the symbol of our brand: triangles in trinity representing a crown in abstract. The Emblem Collection features geometric shapes crafted to perfection and adorned by diamonds and precious stones of different colors. We wanted this collection to be our eternal one. We wanted to create adornments that challenge time.
+                </article>
+            </div><!--EmblemLoveCollectionText1-->
+        </div>
+
+        <img class="lookbook_w100_image EmblemLookbook6 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook6.png" />
+    </div><!--safearea-->
+</div>
+<div class="collectionsSlide2 width-100">
+    <div class="safearea">
+
+        <div class="ArrowSlide2Right right">
+            <img class="lookbook_w100_image EmblemLookbook7 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook7.png" />
+            <img class="lookbook_w100_image EmblemLookbook8 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook8.png" />
+        </div>
+        <div class="ArrowSlide2Left">
+            <img class="lookbook_w100_image EmblemLookbook9 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook9.png" />
+        </div>
+        <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/EmblemLookbook10.png" />
+    </div><!--safearea-->
+</div><!--collectionsSlide2-->
+<div class="homepage_centered_section">
+    <div class="safearea">
+        <div class="collectionCheckContainer width-100">
+            @if (ViewBag.Previous != null)
+            {
+                <a href="@Url.Action(Convert.ToString(ViewBag.Previous),"Collection")" class="collectionPrev left upper CormorantRegular">previous collection</a>
+            }
+
+            @if (ViewBag.Next != null)
+            {
+                <a href="@Url.Action(Convert.ToString(ViewBag.Next),"Collection")" class="collectionPrev right upper CormorantRegular">next collection</a>
+            }
+            <a href="@Url.Action("Index","Category",new { Id = ViewBag.Id, Menu = "Collection" })" class="collectionShop center_left upper CormorantRegular"><div class="bs_fill_dark_orange_collections transition"></div>shop the collection</a>
+            <a href="" class="collectionDownload center_left left upper CormorantRegular">download lookbook</a>
+        </div>
+        <div class="hbox11" style="margin-bottom: 24px;">
+            <div class="hbox11_holder center_both">
+                <div class="hbox11_quote_blurred">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="hbox11_quote">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="doumit_signature"></div>
+            </div><!--hbox11_holder-->
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")

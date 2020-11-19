@@ -1,0 +1,94 @@
+﻿@model List<Zoughaibandco.ViewModel.ProductWishList_VM>
+@{
+    ViewBag.Title = "Wishlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="RestOfPagesWrapper width-100">
+    <div class="wishlistSafe left center_left">
+        <h2 class="width-100 center upper CormorantRegular">wishlist</h2>
+        <h3 class="width-100 center upper ProximaNovaA-Light">KEEP TRACK OF YOUR FAVORITE PRODUCTS, ADD THEM TO YOUR CART</h3>
+
+        <div class="wishlistWrapper width-100">
+
+            @if (Model != null)
+            {
+                if (Model.Count > 0)
+                {
+                    <div id="wishListDiv">
+                        <div class="wishlistItemsContainer left center_left">
+                            <ul class="left" style="width: 444px;">
+                                @foreach (var wishlist in Model)
+                                {
+                                    <li class="left" id="@wishlist.WishListId">
+                                        <div class="wishlistItemIMGholder left" style="background-image: url(../../Uploads/@wishlist.ProductImg)">
+                                            <span onclick="WishListProductRemove(@wishlist.WishListId,this)" class="deleteItem cursor"></span>
+                                        </div>
+                                        <h3 class="width-100 center ProximaNovaA-Regular">@wishlist.Title</h3>
+                                        <h4 class="width-100 center Arapey-Italic">$ @wishlist.Price</h4>
+                                        <a href="javascript:AddItemToBag(@wishlist.ProductId);" class="right CormorantItalic">add to bag</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="wishlistItemsArrows">
+                            <span class="wishlistLeftArrow center_top cursor"></span>
+                            <span class="wishlistRightArrow center_top cursor"></span>
+                        </div>
+
+                        <div class="formButtons left center_left">
+                            <span onclick="EmptyWishList()" class="cancelWishlist left ProximaNovaA-Semibold cursor upper">
+                                cancel
+                            </span>
+                            <a href="@Url.Action("Index","Checkout")" class="gotoCheckout left ProximaNovaA-Semibold cursor upper transition">checkout</a>
+                        </div>
+                    </div>
+                    <div id="NoWishList" class="NoProducts" style="display:none;">No products available in your wishlist.</div>
+                }
+            }
+            else
+            {
+                <div class="NoProducts">No products available in your wishlist.</div>
+            }
+        </div>
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+<script src="~/Scripts/Product.js"></script>
+<script>
+    function EmptyWishList() {
+        var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        EmptyToWishList(UserId);
+    }
+    function WishListProductRemove(WishListId, Element) {
+        var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        WishListProductToRemove(UserId, WishListId, Element);
+    }
+
+    function AddItemToBag(ProductId) {
+         var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        AddItemToCart(UserId, ProductId);
+    }
+
+    var productCounter = 0;
+    var rightMargin = 0;
+
+    $(document).ready(function () {
+        resizeFunction();
+        $(".wishlistItemsArrows span").click(function () {
+            if ($(this).hasClass("wishlistLeftArrow")) {
+                if (productCounter > 0)
+                    productCounter--
+            }
+            else {
+                if (productCounter < $(".wishlistItemsContainer ul li").length - 1)
+                    productCounter++
+            }
+            $(".wishlistItemsContainer ul").stop().clearQueue().animate({ "left": -(productCounter * ($(".wishlistItemsContainer ul li").width() + rightMargin)) + "px" }, 400)
+        });
+    });
+
+</script>

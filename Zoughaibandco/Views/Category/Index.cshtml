@@ -1,0 +1,336 @@
+﻿@model Zoughaibandco.ViewModel.Collection_VM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model != null)
+{
+    <div class="products_cover_bg" style="background-image: url('../../Uploads/@Model.ImgName')">
+        <div class="breadCrumbBanner">
+            <span class="breadCrumbTitle ProximaNovaA-Regular"><a style="color:white" href="@Url.Action("Index","Home", null)">HOME</a> / <a style="color:white" href="@Url.Action("Index","Collection", null)">COLLECTIONS</a> / @Model.CollectionName</span>
+        </div>
+        <img class="mobile_cover_image_products" src="../../Uploads/@Model.ImgName" />
+
+        <div class="hb_holder center_top mobile_products_hb_holder">
+            <h2 class="leatherBannH2 right ProximaNovaA-Light">THE @Model.CollectionName<br />COLLECTION</h2>
+        </div>
+    </div>
+}
+
+<div class="width-100 filterbyContainer" id="filter">
+    <div class="safearea">
+        <div class="left center_left">
+            <span class="filterBy left CormorantSemiBold">FILTER BY:</span>
+            <ul class="left">
+                @if (ViewBag.SubCategories != null)
+                {
+                    @*<li class="filterSub upper left CormorantSemiBold">
+                            <span class="filterSubSpan cursor left center_left upper">CATEGORY</span>
+                            <ul class="ProximaNovaA-Light clear">
+                                @if (ViewBag.SubCategories.Items.Count > 0)
+                                {
+                                    foreach (var subcategory in ViewBag.SubCategories.Items)
+                                    {
+                                        <li class="cursor left clear" onclick="SubCategoryFilter('@subcategory.Id')">@subcategory.SubCategoryName</li>
+                                    }
+                                }
+                            </ul>
+                        </li>*@
+                }
+
+                @if (ViewBag.CollectionsList != null)
+                {
+                    <li class="filterSub upper left CormorantSemiBold">
+                        <span class="filterSubSpan cursor left center_left upper">Collections</span>
+                        <ul class="ProximaNovaA-Light clear">
+                            @if (ViewBag.CollectionsList.Items.Count > 0)
+                            {
+                                foreach (var collection in ViewBag.CollectionsList.Items)
+                                {
+                                    <li class="cursor left clear menuItem" onclick="CollectionFilter('@collection.CollectionId')">@collection.CollectionName</li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+
+                <li class="filterSub upper left CormorantSemiBold">
+                    <span class="filterSubSpan cursor left center_left upper">price</span>
+                    <ul class="ProximaNovaA-Light clear">
+                        <li class="cursor left clear priceItem" onclick="PriceFilter('@Zoughaibandco.ViewModel.PriceFilter.hl.ToString()')">High to Low</li>
+                        <li class="cursor left clear priceItem" onclick="PriceFilter('@Zoughaibandco.ViewModel.PriceFilter.lh.ToString()')">Low to High</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="width-100 productListingWrapper">
+    <div class="safeareaProducts left center_left" style="overflow:visible">
+        <div class="productListingContainer width-100">
+            @if (ViewBag.ProductList != null && ViewBag.ProductList.Count > 0)
+            {
+                foreach (var product in ViewBag.ProductList as List<Zoughaibandco.ViewModel.Product_VM>)
+                {
+                    <div class="productListingDiv left" prodID="@product.ProductId">
+                        <span class="productListingIMG width-100" style="background-image: url('../../Uploads/@product.ProductImg')"></span>
+
+                        <div class="productListingDetailsDiv transition1">
+
+                            <div class="pHead left center_left">
+                                <span class="wishlistIcon left center_top cursor" onclick="AddItemToWishlist(@product.ProductId)"></span>
+                                <span class="shareIcon left center_top cursor"></span>
+                                <span class="addToBasketIcon right center_top cursor" onclick="AddItemToBag(@product.ProductId)"></span>
+                            </div>
+
+                            <div class="productShareDiv transition">
+                                <ul class="left center_left">
+                                    <li class="fb"><a href="javascript:return false" class="absolute"></a></li>
+
+                                    <li class="twit"><a href="javascript:return false" class="absolute"></a></li>
+                                    <li class="pin"><a href="javascript:return false" class="absolute"></a></li>
+                                    <li class="whatsapp"><a href="javascript:return false" class="absolute"></a></li>
+
+                                </ul>
+                            </div>
+
+                            <a href="@Url.Action("Index","Product", new { Id = product.ProductId })" class="productInfo">
+                                <h3 class="productTitle width-100 center upper ProximaNovaA-Regular">@product.Title</h3>
+                                <span class="productPrice width-100 center Arapey-Italic">$ @product.Price</span>
+                                <div class="productLink width-100 center upper CormorantSemiBold">view details</div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="NoProducts">No products currently available.</div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+<script src="~/Scripts/Product.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $(".menuItem").each(function () {
+            $(this).show();
+        });
+
+        $(".menuItem").each(function (index) {
+            if ($(this).css('display') == 'list-item')
+                $(this).addClass('VisibleMenuItems');
+        });
+
+        $(".VisibleMenuItems").first().css({ "margin-top": "10px" });
+        $(".VisibleMenuItems").last().css({ "margin-bottom": "20px" });
+
+
+        $(".filterSub ul").each(function () {
+            var thisHeight = $(this).height();
+            $(this).attr("height", thisHeight);
+            $(this).css({ "height": "0px" })
+        });
+
+        if ($(".safearea").width() > 360) {
+            $(".filterSubSpan").mouseenter(function () {
+                var neededHeight = $(this).parent().find("ul").attr("height");
+                $(this).parent().find("ul").stop().clearQueue().animate({ "height": neededHeight + "px" }, 300)
+            });
+
+            $(".filterSub ").mouseleave(function () {
+                $(this).find("ul").stop().clearQueue().animate({ "height": 0 + "px" }, 300);
+            });
+        }
+        else // mobile
+        {
+            $(".filterSubSpan").toggle(function () {
+                var neededHeight = $(this).parent().find("ul").attr("height");
+                $(this).parent().find("ul").stop().clearQueue().animate({ "height": neededHeight + "px" }, 300);
+                $(this).parent().css({ "padding-bottom": "25px", "border-bottom": "1px solid rgba(255, 255, 255, .5)" });
+                //$(this).css({ "background-image": "URL(/Content/images/filterArrowUp.svg)" });
+            }, function () {
+                $(this).parent().find("ul").stop().clearQueue().animate({ "height": 0 + "px" }, 300);
+                $(this).parent().css({ "padding-bottom": "0px", "border-bottom": "none" });
+                $(this).css({ "background-image": "URL(/Assets/Images/Others/filterArrow.svg)" });
+            });
+
+            $(".filterBy").toggle(function () {
+                $(this).parent().parent().parent().css({ "height": "auto" });
+                //$(this).css({ "background-image": "URL(/Content/images/filterArrowUp.svg)" });
+            }, function () {
+                $(this).parent().parent().parent().css({ "height": "19px" });
+                $(this).css({ "background-image": "URL(/Assets/Images/Others/filterArrow.svg)" });
+            });
+
+
+        }
+
+
+        $(".shareIcon").click(function () {
+            if ($(this).hasClass("shareIconOpened")) {
+                $(this).removeClass("shareIconOpened");
+                $(this).parent().parent().find(".productShareDiv").css({ "display": "none" })
+            }
+            else {
+                $(this).addClass("shareIconOpened");
+                $(this).parent().parent().find(".productShareDiv").css({ "display": "block" })
+
+            }
+        });
+
+        $(".productListingDiv ").mouseleave(function () {
+            $(".productShareDiv").css({ "display": "none" });
+            $(".shareIcon").removeClass("shareIconOpened");
+        });
+
+        var href = new URL(location.href);
+
+           
+        // call share functions
+        $(".fb").each(function () {
+            $(this).click(function () {
+                var link = href.origin + $(this).parent().parent().parent().find(".productInfo").attr("href");
+                fbshareCurrentPage(link);
+            });
+        });
+        $(".twit").each(function () {
+            $(this).click(function () {
+                var link = href.origin + $(this).parent().parent().parent().find(".productInfo").attr("href");
+                TweetCurrentPage(link);
+            });
+        });
+        $(".pin").each(function () {
+            $(this).click(function () {
+                var link = href.origin + $(this).parent().parent().parent().find(".productInfo").attr("href");
+                PinterestShareCurrentPage(link);
+            });
+        });
+        $(".whatsapp").each(function () {
+            $(this).click(function () {
+                var link = href.origin + $(this).parent().parent().parent().find(".productInfo").attr("href");
+                WhatsappCurrentPage(link);
+            });
+        });
+
+        if ($(window).width() < 1000) {
+            $(".productListingIMG").click(function () {
+                $(this).parent().find(".productListingDetailsDiv").css({
+                    "-moz-transform": "scale(1,1)",
+                    "-o-transform": "scale(1,1)",
+                    "-webkit-transform": "scale(1,1)",
+                    "transform": "scale(1,1)",
+                });
+
+            });
+
+            $('.productListingDetailsDiv').click(function (event) {
+                if (!$(event.target).is('span')) {
+                    $(this).css({
+                        "-moz-transform": "scale(0,0)",
+                        "-o-transform": "scale(0,0)",
+                        "-webkit-transform": "scale(0,0)",
+                        "transform": "scale(0,0)",
+                    });
+                }
+            });
+
+        }//only tablet mobile
+
+    });
+
+    function AddItemToWishlist(ProductId) {
+         var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        AddToWishList(UserId, ProductId);
+    }
+
+    function AddItemToBag(ProductId) {
+         var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        AddItemToCart(UserId, ProductId);
+    }
+
+    function PriceFilter(Filter) {
+        var href = new URL(location.href);
+        var splittedhref = location.href.split("#");
+
+        var current = href.searchParams.get('Price');
+        if (current != null) {
+            if (current != Filter) {
+                href.searchParams.set('Price', Filter);
+                if (splittedhref.length != 1) {
+                    window.location = href;
+                }
+                else {
+                    window.location = href + "#filter";
+                }
+            }
+        }
+        else {
+            href.searchParams.set('Price', Filter);
+            if (splittedhref.length != 1) {
+                window.location = href;
+            }
+            else {
+                window.location = href + "#filter";
+            }
+        }
+    }
+
+    function CollectionFilter(CollectionId) {
+        var href = new URL(location.href);
+
+        var splittedhref = location.href.split("#");
+
+        var current = href.searchParams.get('Collection');
+        if (current != null) {
+            if (current != CollectionId) {
+                href.searchParams.set('Collection', CollectionId);
+
+                if (splittedhref.length != 1) {
+                    window.location = href;
+                }
+                else {
+                    window.location = href + "#filter";
+                }
+
+            }
+        }
+        else {
+            href.searchParams.set('Collection', CollectionId);
+           // window.location = href;
+            if (splittedhref.length != 1) {
+                window.location = href;
+            }
+            else {
+                window.location = href + "#filter";
+            }
+        }
+    }
+
+    function SubCategoryFilter(SubCatId) {
+        var href = new URL(location.href);
+        var current = href.searchParams.get('SubCat');
+        if (current != null) {
+            if (current != SubCatId) {
+                href.searchParams.set('SubCat', SubCatId);
+                window.location = href;
+            }
+        }
+        else {
+            href.searchParams.set('SubCat', SubCatId);
+            window.location = href;
+        }
+    }
+</script>

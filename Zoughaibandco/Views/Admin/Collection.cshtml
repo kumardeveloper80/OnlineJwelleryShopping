@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+<div class="topContainer">
+    <div class="toolbar">
+        <div class="buttons">
+            <input type="submit" class="button" id="addItem" value="Add" onclick="window.location = '/Admin/AddEditCollection?CollectionId=0'">
+        </div>
+    </div>
+</div>
+
+<div class="list">
+    <div class="filtering" style="color: #d37137; height: 20px; margin-top: 20px; margin-bottom: 19px; padding-left: 50px;">
+        <input id="searchTxt" placeholder="Search by collection name"
+               style="width: 218px;margin-left: -11px;float: left;color: #d37137;font-family: Verdana;height: 22px;line-height: 20px;padding-left: 10px;padding-right: 70px;background-repeat: no-repeat;background-position: 270px center;border: 1px solid rgb(221, 221, 221);background-image:url(../../Assets/Images/Others/searchAdminIcon.png);">
+        @*<div style="float: right; margin-right: 55px; cursor: pointer;" onclick="ProductList('@Zoughaibandco.ViewModel.ProductFilter.category.ToString()')">Categories</div>*@
+        @*<div style="float: right; margin-right: 30px; cursor: pointer;" onclick="ProductList('@Zoughaibandco.ViewModel.ProductFilter.none.ToString()')">None</div>*@
+        @*<div style="float: right; margin-right: 30px; cursor:default;"><u>Filter by: </u></div>*@
+    </div>
+
+    <div id="collectionListDiv" class="list"></div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/Scripts/Admin/Collection_Admin.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        if (localStorage.getItem("link") != null) {
+            $("#" + localStorage.getItem("link")).addClass('selectedMenu');
+            fnClear();
+        }
+
+        $('.liMenu').mouseover(function () {
+            if ($(this).attr("class") != "liMenu selectedMenu") {
+                $(this).addClass('selectedMenu').removeClass('liMenu').mouseout(function () {
+                    $(this).addClass('liMenu').removeClass('selectedMenu');
+                });
+            }
+        });
+    });
+    function fnClear() {        localStorage.clear();
+    }
+</script>

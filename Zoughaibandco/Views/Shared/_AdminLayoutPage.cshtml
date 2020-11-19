@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Admin/style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery10.js"></script>
+    <script src="~/Scripts/Admin/jquery.ui.sortable.js"></script>
+    <script src="~/Scripts/Admin/Admin.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            if (localStorage.getItem("link") != null) {
+                $("#" + localStorage.getItem("link")).addClass('selectedMenu');
+            }
+            else {
+                $("#Product").addClass('selectedMenu');
+            }
+
+            $('.liMenu').mouseover(function () {
+                if ($(this).attr("class") != "liMenu selectedMenu") {
+                    $(this).addClass('selectedMenu').removeClass('liMenu').mouseout(function () {
+                        $(this).addClass('liMenu').removeClass('selectedMenu');
+                    });
+                }
+            });
+        });
+
+        function fnActiveLink(linkName) {
+            localStorage.setItem("link", linkName);
+            $("#" + localStorage.getItem("link")).addClass('selectedMenu');
+        }
+        function fnClear() {
+            localStorage.clear();
+        }
+
+        window.onbeforeunload = function () {
+            alert(0);
+        };
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="leftContainer">
+            <ul>
+
+                <li style="width: 100%; height: 150px;">
+                    <div style="color: white; position: relative; z-index: 1; text-align: center; padding-top: 59px; font-size: 21px;">Hi ZOUGHAIB TEAM !</div>
+                </li>
+
+                <a href="@Url.Action("Client","Admin",null)"><li class="liMenu" id="Client" onclick="fnActiveLink('Client')"><label>CLIENTS</label></li></a>
+                <a href="@Url.Action("Product","Admin",null)"><li class="liMenu" id="Product" onclick="fnActiveLink('Product')"><label>PRODUCTS</label></li></a>
+                <a href="@Url.Action("HelpMessage","Admin",null)"><li class="liMenu" id="HelpMessage" onclick="fnActiveLink('HelpMessage')"><label>HELP MESSAGES</label></li></a>
+                <a href="@Url.Action("GiftCardRequest","Admin",null)"><li class="liMenu" id="GiftCardRequest" onclick="fnActiveLink('GiftCardRequest')"><label>GIFT CARDS REQUESTS</label></li></a>
+                <a href="@Url.Action("Orders","Admin",null)"><li class="liMenu" id="Orders" onclick="fnActiveLink('Orders')"><label>ORDERS</label></li></a>
+                <a href="@Url.Action("Collection","Admin",null)"><li class="liMenu" id="Collection" onclick="fnActiveLink('Collection')"><label>COLLECTIONS</label></li></a>
+                <a href="@Url.Action("SignOut","Admin",null)"><li class="liMenu " onclick="fnClear()"><label>LOG OUT</label></li></a>
+                <li class="loadinglb"></li>
+            </ul>
+        </div>
+
+        <div class="rightContainer">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="ajax-loader" style="position: absolute;left: 50%;top: 30%;">
+        <img src="~/Assets/Images/Others/giphy.gif" class="img-responsive" />
+    </div>
+</body>
+</html>

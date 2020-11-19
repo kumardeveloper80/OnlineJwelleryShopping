@@ -1,0 +1,82 @@
+﻿@model List<Zoughaibandco.ViewModel.Order_VM>
+
+
+@if (Model.Any())
+{
+    <ul id="sort" class="ui-sortable">
+
+        @foreach (var order in Model)
+        {
+            <li class="zbi">
+                Order Ref. Number: @order.OrderRef &nbsp; &nbsp; PaymentMethod: @order.PaymentMethod
+                <div class="dexpandCheckout" style="cursor: pointer;">
+                    <div>Checkout date: @order.CheoutDate.ToString("MM/dd/yyyy hh:mm tt")</div>
+
+                    @if (order.IsGuest == true)
+                    {
+                        <div>User Name : Guest User</div>
+                    }
+                    else
+                    {
+                        <div>User Name : @order.ClientName</div>
+                    }
+                    <div>Email : @order.Email</div>
+                    <div>Amount: $@order.GrandTotal</div>
+                    <div>Billing Address: @order.BillingAddress</div>
+                    <div>Phone: @order.Phone</div>
+                    <div>Shipping Address: @order.ShippingAddress</div>
+                    <div>Additional shipping information: @order.AdditionalInformation</div>
+                    <div>Delivery message: @order.DeliveryMessage</div>
+
+                    @if (@order.PaymentMethod == Zoughaibandco.ViewModel.PaymentType.ONLINE.ToString())
+                    {
+                        <div>Payment Status : @order.PaymentStatus</div>
+                    }
+
+                    @if (order.OrderItems.Any())
+                    {
+                        <div>
+                            Items:
+                            <ul>
+                                @foreach (var item in order.OrderItems)
+                                {
+                                    <li>
+                                        <img style="vertical-align: middle;" width="100" height="100" src="/Uploads/@item.ProductImg">
+                                        <b>Product title:@item.ProductName </b>. <b>Price: </b>@item.Price. <b>Quantity: </b>@item.Qty
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <h2>No order(s) found</h2>
+}
+
+<script>
+    $(".dexpandCheckout").each(function () {
+        $(this).click(function () {
+            if ($(this).attr("class").indexOf("BigCheckout") == -1) {
+                $(this).addClass("BigCheckout");
+            }
+            else {
+                $(this).removeClass("BigCheckout");
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('#startDate').datepicker({
+            dateFormat: 'mm/dd/yy',
+        });
+        $('#endDate').datepicker({
+            dateFormat: 'mm/dd/yy',
+        });
+    });
+
+</script>

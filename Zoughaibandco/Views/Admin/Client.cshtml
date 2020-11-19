@@ -1,0 +1,20 @@
+﻿@model List<Zoughaibandco.ViewModel.Client_VM>
+@{
+    ViewBag.Title = "Client";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="topContainer">
+    <div class="toolbar">
+        <div class="buttons">
+        </div>
+    </div>
+</div>
+
+<div class="filtering" style="color: #d37137; height: 20px; margin-top: 20px; margin-bottom: 19px; padding-left: 50px;">
+    <input id="searchTxt" placeholder="Search by name or username" name="search" style="width: 200px; margin-left: -11px; float: left; color: #d37137; font-family: Verdana; height: 22px; line-height: 20px; padding-left: 10px; padding-right: 70px; background-repeat: no-repeat; background-position: 255px center; border: 1px solid rgb(221, 221, 221);background-image:url(../../Assets/Images/Others/searchAdminIcon.png)">
+</div>
+
+<div id="clientListDiv" class="list"></div>
+
+<script src="~/Scripts/Admin/Client_Admin.js"></script>

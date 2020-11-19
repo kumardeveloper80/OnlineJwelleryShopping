@@ -1,0 +1,514 @@
+﻿@model Zoughaibandco.ViewModel.Collection_VM
+@{
+    ViewBag.Title = "AddEditCollection";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="topContainer">
+    <div class="toolbar">
+        <div class="buttons">
+            <input type="button" class="button" id="addItem" value="Save" onclick="AddEditCollection()">
+        </div>
+    </div>
+</div>
+
+<div>
+    <form>
+
+        <style type="text/css">
+            #flashContent1 {
+                height: 30px;
+                width: 243px;
+                z-index: 0;
+            }
+
+            html, body {
+                height: auto;
+            }
+
+            .colorDiv {
+                float: left;
+                margin-right: 10px;
+                width: 30px;
+                height: 30px;
+            }
+
+            .removeColor {
+                display: none;
+                font-weight: bold;
+                width: 100%;
+                height: 100%;
+                font-size: 23px;
+                opacity: 0.6;
+                text-align: center;
+                background-color: white;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .colorDiv:hover .removeColor {
+                display: block;
+            }
+        </style>
+
+        <fieldset>
+            @Html.HiddenFor(x => x.CollectionId)
+            @Html.HiddenFor(x => x.IsAdminAdded)
+            <div class="editor-label">
+                <label for="CollectionName">Name</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.CollectionName, new { @class = "date" })
+            </div>
+
+            <div class="editor-label">
+                <label for="IsActive">Is Active</label>
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(x => x.Active)
+            </div>
+
+            <div class="editor-label">
+                <label for="RouteName">Route Name</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.RouteName, new { @class = "date" })
+            </div>
+
+            <div class="editor-label">
+                <label for="Order">Order</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.Order, new { @class = "date", @onkeypress = "return isNumberKey(event);" })
+            </div>
+
+            <div class="editor-label">
+                <label for="Side">Side</label>
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.SideId, new SelectList(ViewBag.SideList, "Value", "Text"))
+            </div>
+            <hr />
+            <!-- Banner uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="BannerImage">Banner Image</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.ImgName != null)
+                        {
+                            <img src="/Uploads/@Model.ImgName" width="350px" alt="" id="collectionImg1">
+                            <div id="deleteImg1" class="deleteImage" onclick="RemoveImg('','', 1)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg1">
+                            <div id="deleteImg1" class="deleteImage" style="display:none" onclick="RemoveImg('','',1)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg1">
+                        <div id="deleteImg1" class="deleteImage" style="display:none" onclick="RemoveImg('','',1)"></div>
+                    }
+
+                </div>
+                <input id="SingleImage1" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <hr />
+            <!-- BackgroundImage uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="BackgroundImage">Background Image</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.BackgroundImage != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.BackgroundImage" width="350px" alt="" id="collectionImg2">
+                            <div id="deleteImg2" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'BackgroundImage',2)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg2">
+                            <div id="deleteImg2" class="deleteImage" style="display:none" onclick="RemoveImg('','',2)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg2">
+                        <div id="deleteImg2" class="deleteImage" style="display:none" onclick="RemoveImg('','',2)"></div>
+                    }
+
+                </div>
+                <input id="SingleImage2" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- ForegroundImage uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="ForegroundImage">Foreground Image</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.ForegroundImage != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.ForegroundImage" width="350px" alt="" id="collectionImg3">
+                            <div id="deleteImg3" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'ForegroundImage',3)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg3">
+                            <div id="deleteImg3" class="deleteImage" style="display:none" onclick="RemoveImg('','',3)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg3">
+                        <div id="deleteImg3" class="deleteImage" style="display:none" onclick="RemoveImg('','',3)"></div>
+                    }
+
+                </div>
+                <input id="SingleImage3" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- Logo Image uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="LogoImage">Logo Image</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.LogoImage != null)
+                        {
+                            <img src="/Assets/Images/Others/@Model.LogoImage" width="350px" alt="" id="collectionImg4" style="background-color:black;">
+                            <div id="deleteImg4" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'LogoImage',4)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg4" style="background-color:black;">
+                            <div id="deleteImg4" class="deleteImage" style="display:none" onclick="RemoveImg('','',4)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg4" style="background-color:black;">
+                        <div id="deleteImg4" class="deleteImage" style="display:none" onclick="RemoveImg('','',4)"></div>
+                    }
+
+                </div>
+                <input id="SingleImage4" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <hr />
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image1">Image 1</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage1 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage1" width="350px" alt="" id="collectionImg5">
+                            <div id="deleteImg5" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage1',5)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg5">
+                            <div id="deleteImg5" class="deleteImage" style="display:none" onclick="RemoveImg('','',5)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg5">
+                        <div id="deleteImg5" class="deleteImage" style="display:none" onclick="RemoveImg('','',5)"></div>
+                    }
+                </div>
+                <input id="SingleImage5" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image2">Image 2</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage2 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage2" width="350px" alt="" id="collectionImg6">
+                            <div id="deleteImg6" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage2',6)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg6">
+                            <div id="deleteImg6" class="deleteImage" style="display:none" onclick="RemoveImg('','',6)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg6">
+                        <div id="deleteImg6" class="deleteImage" style="display:none" onclick="RemoveImg('','',6)"></div>
+                    }
+                </div>
+                <input id="SingleImage6" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image3">Image 3</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage3 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage3" width="350px" alt="" id="collectionImg7">
+                            <div id="deleteImg7" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage3',7)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg7">
+                            <div id="deleteImg7" class="deleteImage" style="display:none" onclick="RemoveImg('','',7)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg7">
+                        <div id="deleteImg7" class="deleteImage" style="display:none" onclick="RemoveImg('','',7)"></div>
+                    }
+                </div>
+                <input id="SingleImage7" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image4">Image 4</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage4 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage4" width="350px" alt="" id="collectionImg8">
+                            <div id="deleteImg8" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage4',8)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg8">
+                            <div id="deleteImg8" class="deleteImage" style="display:none" onclick="RemoveImg('','',8)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg8">
+                        <div id="deleteImg8" class="deleteImage" style="display:none" onclick="RemoveImg('','',8)"></div>
+                    }
+                </div>
+                <input id="SingleImage8" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <div class="editor-label">
+                <label for="Description">Collection description</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(x => x.AboutText, new { @class = "ckeditor" })
+            </div>
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image5">Image 5</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage5 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage5" width="350px" alt="" id="collectionImg9">
+                            <div id="deleteImg9" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage5',9)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg9">
+                            <div id="deleteImg9" class="deleteImage" style="display:none" onclick="RemoveImg('','',9)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg9">
+                        <div id="deleteImg9" class="deleteImage" style="display:none" onclick="RemoveImg('','',9)"></div>
+                    }
+                </div>
+                <input id="SingleImage9" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image6">Image 6</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage6 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage6" width="350px" alt="" id="collectionImg10">
+                            <div id="deleteImg10" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage6',10)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg10">
+                            <div id="deleteImg10" class="deleteImage" style="display:none" onclick="RemoveImg('','',10)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg10">
+                        <div id="deleteImg10" class="deleteImage" style="display:none" onclick="RemoveImg('','',10)"></div>
+                    }
+                </div>
+                <input id="SingleImage10" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image7">Image 7</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage7 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage7" width="350px" alt="" id="collectionImg11">
+                            <div id="deleteImg11" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage7',11)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg11">
+                            <div id="deleteImg11" class="deleteImage" style="display:none" onclick="RemoveImg('','',11)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg11">
+                        <div id="deleteImg11" class="deleteImage" style="display:none" onclick="RemoveImg('','',11)"></div>
+                    }
+                </div>
+                <input id="SingleImage11" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+            <!-- Image1 uploads -->
+            <div class="editor-label">
+                <div>
+                    <label id="imgLbl" for="Image8">Image 8</label>
+                </div>
+                <div class="imageWrapper">
+                    @if (Model != null)
+                    {
+                        if (Model.PageImage8 != null)
+                        {
+                            <img src="/Assets/Images/AllCollection/@Model.PageImage8" width="350px" alt="" id="collectionImg12">
+                            <div id="deleteImg12" class="deleteImage" onclick="RemoveImg(@Model.CollectionId,'PageImage8',12)"></div>
+
+                        }
+                        else
+                        {
+                            <img src="" width="350px" alt="" id="collectionImg12">
+                            <div id="deleteImg12" class="deleteImage" style="display:none" onclick="RemoveImg('','',12)"></div>
+                        }
+                    }
+                    else
+                    {
+                        <img src="" width="350px" alt="" id="collectionImg12">
+                        <div id="deleteImg12" class="deleteImage" style="display:none" onclick="RemoveImg('','',12)"></div>
+                    }
+                </div>
+                <input id="SingleImage12" type="file" accept="image/*" style="vertical-align:top; display:-moz-inline-stack; display:inline-block; *display:inline; zoom:1;">
+                <div id="single"></div>
+            </div>
+            <!-- End uploads -->
+
+
+
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>Bread Crum Color</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.Breadcrumcolour)
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>LookBook Color</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.LookBookTextcolour)
+                    </div>
+                </div>
+            </div>
+
+            <div style="float:left; width:100%;">
+                <div style="width:50%; float:left;">
+                    <div class="editor-label">
+                        <label>LookBook Border Color</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.LookBookBorderColor)
+                    </div>
+                </div>
+                <div style="width:45%; float:right; margin-left:10px;">
+                    <div class="editor-label">
+                        <label>Shop The Collection TextColor</label>
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.ShopTheCollectionTextColor)
+                    </div>
+                </div>
+            </div>
+
+
+
+        </fieldset>
+
+    </form>
+</div>
+<script src="~/Scripts/Admin/Collection_Admin.js"></script>
+<script src="~/Scripts/Admin/jscolor.js"></script>
+<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>

@@ -1,0 +1,295 @@
+﻿<div class="grey_footer">
+    <div class="grey_footer_holder center_both">
+
+        <div class="footer_column">
+            <span class="ProximaNovaA-Regular">COMPANY</span>
+            @Html.ActionLink("About us", "OurStory", "Home", null, null)
+            @Html.ActionLink("Careers", "Careers", "Home", null, null)
+            @Html.ActionLink("Store Locator", "Stores", "Home", null, null)
+        </div><!--footer_column-->
+        <div class="footer_column">
+            <span class="ProximaNovaA-Regular">SERVICE</span>
+            @Html.ActionLink("FAQs", "FAQS", "Home", null, null)
+            @Html.ActionLink("Contact us", "Contact", "Home", null, null)
+            @Html.ActionLink("Help", "Help", "Home", null, null)
+        </div><!--footer_column-->
+        <div class="footer_column">
+            <span class="ProximaNovaA-Regular">ORDERS</span>
+            <a href="javascript:accessAccount();">My account</a>
+            @Html.ActionLink("Shipping Policy", "ShippingPolicy", "Home", null, null)
+        </div><!--footer_column-->
+        <div class="footer_column">
+            <span class="ProximaNovaA-Regular">LEGAL</span>
+            @Html.ActionLink("Cookies Policy", "Cookies", "Home", null, null)
+            @Html.ActionLink("Exchange Policy", "ExchangePolicy", "Home", null, null)
+            @Html.ActionLink("Privacy Policy", "PrivacyPolicy", "Home", null, null)
+            @Html.ActionLink("Terms & Conditions", "Terms", "Home", null, null)
+        </div><!--footer_column-->
+        <div class="footer_column">
+            <span class="ProximaNovaA-Regular">FOLLOW US</span>
+            <a href="https://www.facebook.com/ZoughaibAndCo/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/zoughaibandco/" target="_blank">Instagram</a>
+            <a href="https://www.youtube.com/channel/UCTtLiJzkQeEZPLgy8U63r9A" target="_blank">Youtube</a>
+        </div><!--footer_column-->
+
+    </div><!--grey_footer_holder-->
+</div><!--grey_footer-->
+
+<div class="orange_footer"><span>&#64; 2019</span>  ZOUGHAIB &amp; CO.</div>
+
+<div class="login_popup">
+    <div class="login_popup_holder center_both">
+        <div class="closepopup"></div>
+        <div class="poplogin_form center_both">
+            <div class="poplogin_logo"></div>
+            <form onsubmit="return false" id="loginForm" name="loginForm">
+                <label class="form_label">Email*</label>
+                <input id="loginUsername" name="loginUsername" class="short_input" type="email" />
+                <label id="lblPassword" class="form_label passme">Password*</label>
+                <input id="loginPassword" name="loginPassword" class="short_input" type="password" />
+                <a id="linkForgotPwd" href="javascript:forgotPassword()" class="poplogin_forgot_pass">Forgot Password ?</a>
+                <a href="javascript:sendPassword()" class="sendPassword">Send Password</a>
+                <input id="btnLoginUser" onclick="loginUser()" class="form_cta transition" type="submit" value="LOGIN" />
+                <input id="btnLoginGuestUser" onclick="loginGuestUser()" class="form_cta transition" type="submit" value="ok" />
+                <div id="linkSignup" class="not_a_member_label center_left transition">Not a member ? <a href="/Home/Signup" class="poplogin_signup">SIGN UP HERE</a></div>
+            </form>
+        </div><!--poplogin_form-->
+    </div><!--login_popup_holder-->
+</div><!--login_popup-->
+
+<div class="search_popup">
+    <input class="search_input" value="SEARCH" onclick="if (this.value == 'SEARCH') this.value = ''" onblur="if (this.value == '') this.value = 'SEARCH'" />
+    <div class="close_search"></div>
+    <div class="searchButton"></div>
+</div><!--search_popup-->
+
+<script type="text/javascript">
+    CountWishListCart();
+    function login(id) {
+        if (id == 1) {
+            var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+            if (isGuest.toLowerCase() == 'true') {
+                var email = '@HttpContext.Current.Session["GuestEmail"]';
+                var AtPos = email.indexOf("@@");
+                var StopPos = email.lastIndexOf(".");
+                var StopSecondPos = email.length;
+                //if ((jQuery.trim($('#loginUsername').val()) == "" || (AtPos == -1 || StopPos == -1 || (StopPos != -1 && StopPos == StopSecondPos - 1)))) {                    
+                //    $("#btnLoginGuestUser").show();
+                //    $("#btnLoginUser").hide();
+                //    $("#linkSignup").hide();
+                //    $("#linkForgotPwd").hide();
+                //    $("#lblPassword").hide();
+                //    $("#loginPassword").hide();
+                //    $('.login_popup').fadeIn(200);
+                //    $(".forgotPassAddon").removeClass("forgotPassAddon");
+                //}
+                //else {
+                //    window.location = "/Checkout";
+                //}
+                $("#btnLoginGuestUser").show();
+                $("#btnLoginUser").hide();
+                $("#linkSignup").hide();
+                $("#linkForgotPwd").hide();
+                $("#lblPassword").hide();
+                $("#loginPassword").hide();
+                $('#loginUsername').val(email);
+                $('.login_popup').fadeIn(200);
+                $(".forgotPassAddon").removeClass("forgotPassAddon");
+            }            
+        }
+        else {
+            $("#btnLoginGuestUser").hide();
+            $("#btnLoginUser").show();
+            $("#linkSignup").show();
+            $("#linkForgotPwd").show();
+            $("#lblPassword").show();
+            $("#loginPassword").show();
+            $('.login_popup').fadeIn(200);
+            $(".forgotPassAddon").removeClass("forgotPassAddon");
+        }
+    }
+
+    function accessAccount() {
+        var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        if (UserId > 0) {
+            window.location = "/Home/SignUp";
+        }
+        else {
+            $(".login_popup").fadeIn(200);
+        }
+    }
+
+    function signout() {
+        $('.ajax-loader').css("visibility", "visible");
+        var routeURL = location.protocol + '//' + location.host;
+        $.ajax({
+            url: routeURL + '/api/AjaxCall/SignOut',
+            type: 'Get',
+            success: function (data) {
+                if (data.status == "1") {
+                    window.location = routeURL + "/Home";
+                }
+                $('.ajax-loader').css("visibility", "hidden");
+            }
+        });
+    }
+
+    function loginUser()
+        {
+            var bookAppointmentOkToGo = 0;
+            var routeURL = location.protocol + '//' + location.host;
+            var email = $('#loginUsername').val();
+            var AtPos = email.indexOf("@@");
+            var StopPos = email.lastIndexOf(".");
+            var StopSecondPos = email.length;
+
+            $("label").css({ color: "#000" });
+
+            if (jQuery.trim($("#loginPassword").val()) == "") {
+                bookAppointmentOkToGo = 1;
+                $("#loginPassword").parent().find("label").last().css({ color: "red" });
+            }
+            else {
+                $("#loginPassword").parent().find("label").last().css({ color: "#75797A" });
+            }
+            if ((jQuery.trim($('#loginUsername').val()) == "" || (AtPos == -1 || StopPos == -1 || (StopPos != -1 && StopPos == StopSecondPos - 1)))) {
+                bookAppointmentOkToGo = 1;
+                $("#loginUsername").parent().find("label").first().css({ color: "red" });
+            }
+            else {
+                $("#loginUsername").parent().find("label").first().css({ color: "#75797A" });
+            }
+
+        if (bookAppointmentOkToGo == 0) {
+                $('.ajax-loader').css("visibility", "visible");
+                poststr = $("#loginForm").serialize();
+
+                $.ajax({
+                    url: routeURL + '/api/AjaxCall/Login',
+                    type: 'POST',
+                    data: '' + poststr,
+                    success: function (data) {
+                        if (data.status == "2") {
+                            window.location.reload(1);
+                        }
+                        else if (data.status == "1") {
+                            swal("Error", "Wrong username or password");
+                        }
+                        else {
+                            swal("Connection problem", "Something went wrong with your internet connection, please try again later!");
+                        }
+                        $('.ajax-loader').css("visibility", "hidden");
+                    }
+                });
+            }
+    }
+
+    function loginGuestUser() {
+        var bookAppointmentOkToGo = 0;
+        var routeURL = location.protocol + '//' + location.host;
+        var email = $('#loginUsername').val();
+        var AtPos = email.indexOf("@@");
+        var StopPos = email.lastIndexOf(".");
+        var StopSecondPos = email.length;
+
+        $("label").css({ color: "#000" });
+
+        if ((jQuery.trim($('#loginUsername').val()) == "" || (AtPos == -1 || StopPos == -1 || (StopPos != -1 && StopPos == StopSecondPos - 1)))) {
+            bookAppointmentOkToGo = 1;
+            $("#loginUsername").parent().find("label").first().css({ color: "red" });
+        }
+        else {
+            $("#loginUsername").parent().find("label").first().css({ color: "#75797A" });
+        }
+
+        if (bookAppointmentOkToGo == 0) {
+            $('.ajax-loader').css("visibility", "visible");
+            poststr = $("#loginForm").serialize();
+
+            $.ajax({
+                url: routeURL + '/api/AjaxCall/LoginCheck',
+                type: 'POST',
+                data: '' + poststr,
+                success: function (data) {
+                    if (data.status == "1") {
+                        swal("Warning", "You have a account with same email id please Login.");
+                        login();
+                    }
+                    else if (data.status == "2") {
+                        $('.login_popup').fadeOut(200);
+                        window.location = "/Checkout";
+                    }
+                    else {
+                        swal("Connection problem", "Something went wrong with your internet connection, please try again later!");
+                    }
+                    $('.ajax-loader').css("visibility", "hidden");
+                }
+            });
+        }
+    }
+
+    function forgotPassword() {
+        $(".login_popup_holder").addClass("forgotPassAddon");
+    }
+
+    function sendPassword() {
+            var bookAppointmentOkToGo = 0;
+            var routeURL = location.protocol + '//' + location.host;
+            var email = $('#loginUsername').val();
+            var AtPos = email.indexOf("@@");
+            var StopPos = email.lastIndexOf(".");
+            var StopSecondPos = email.length;
+
+            $("label").css({ color: "#000" });
+
+            if ((jQuery.trim($('#loginUsername').val()) == "" || (AtPos == -1 || StopPos == -1 || (StopPos != -1 && StopPos == StopSecondPos - 1)))) {
+                bookAppointmentOkToGo = 1;
+                $("#loginUsername").parent().find("label").first().css({ color: "red" });
+            }
+            else {
+                $("#loginUsername").parent().find("label").first().css({ color: "#75797A" });
+            }
+
+        if (bookAppointmentOkToGo == 0) {
+                $('.ajax-loader').css("visibility", "visible");
+                poststr = $("#loginForm").serialize();
+
+                $.ajax({
+                    url: routeURL + '/api/AjaxCall/ForgotPassword',
+                    type: 'POST',
+                    data: '' + poststr,
+                    success: function (data) {
+                        if (data.status == "0") {
+                            swal("Success", "Your password was sent to your email account");
+                            $(".closepopup").click();
+                        }
+                        else if (data.status == "1") {
+                            swal("Warning", "Your email does not exist in our databases");
+                        }
+                        else {
+                            swal("Connection problem", "Something went wrong with your internet connection, please try again later!");
+                        }
+                        $('.ajax-loader').css("visibility", "hidden");
+                    }
+                });
+            }
+    }
+
+    function CountWishListCart() {
+        var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        if (UserId > 0) {
+            $('.ajax-loader').css("visibility", "visible");
+            var routeURL = location.protocol + '//' + location.host;
+            $.ajax({
+                url: routeURL + '/api/AjaxCall/CountWishListCart?UserId=' + UserId,
+                type: 'Get',
+                success: function (data) {
+                    $("#widhItemsCount").html(data.dataenum.WishListCount);
+                    $("#cartItemsCount").html(data.dataenum.CartCount);
+                    $('.ajax-loader').css("visibility", "hidden");
+                }
+            });
+        }
+    }
+
+</script>

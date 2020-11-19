@@ -1,0 +1,93 @@
+﻿<div class="collectionsSLide1 width-100" style="background-image: url('../../Assets/Images/AllCollection/TarboushCollectionLookbookGradient.png')">
+    <div class="safeareaProducts left center_left">
+        <div class="breadCrumb breadCrumbCollections right">
+            <span class="breadCrumbTitle ProximaNovaA-Regular"><a style="color:white" href="@Url.Action("Index","Home", null)">HOME</a> / <a style="color:white" href="@Url.Action("Index","Collection", null)">COLLECTIONS</a> / TARBOUSH COLLECTION</span>
+        </div>
+        <div class="collectionsimg1 arrowcollectionsimg1 left" style="background-image: url('../../Assets/Images/AllCollection/tarboushLookbook1.png')"></div>
+        <div class="collectionsSlide1Content center_top">
+            <span class="lookbook upper width-100 ProximaNovaA-Regular tarboushcolor_white">
+                lookbook
+                <a class="tarboushcolor_white" href="../../Category/1035.html" style="font-size:20px">Shop the collection</a>
+            </span>
+            <h2 class="width-100 upper tarboushcollectionSVG"></h2>
+            <a href="" class="right upper ProximaNovaA-Light">DOWNLOAD LOOKBOOK</a>
+            <a class="shopCollectionB1 right upper ProximaNovaA-Light" href="@Url.Action("Index","Category",new { Id = ViewBag.Id, Menu = "Collection" })"><div class="bs_fill_white_collections transition"></div>Shop the collection</a>
+        </div>
+    </div>
+</div>
+<div class="collectionsSlide2 width-100">
+    <div class="safearea">
+        <div class="BridalSlide2Left left">
+            <div class="collectionsSlide2LeftIMG_tarboush TarboushLookbook95w anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/tarboushLookbook3.png');"></div>
+        </div>
+        <div class="TarboushSlide2Right right">
+            <div class="BridalSlide2RightIMG anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/tarboushLookbook2.png')"></div>
+            <img class="lookbook_w100_image tarboushLookbook4 center_left anim_opacity0 transition2" src="../../Assets/Images/AllCollection/tarboushLookbook4.png" />
+        </div>
+    </div><!--safearea-->
+</div>
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <div class="TarboushSlide2Left left">
+            <div class="tarboushLookbook5 anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/tarboushLookbook5.png');"></div>
+        </div>
+        <div class="TarboushSlideRight1 right">
+            <div class="TarboushCollectionText1 anim_opacity0 transition2">
+                <article class="left center_left ProximaNovaA-Regular">
+                    Our Most original Collection. The Tarboush Collection is inspired by our legacy. We wanted to create a token, a symbol that represents our oriental belonging. A piece of Jewelry so unique that it will never go unnoticed. The Tarboush designs come is 3 dimensions, 2 dimensions and flat. The Collection is set on 18 carat gold with precious stones and semi-precious stones. This is the kind of ornament that travels through generations. A best-seller, and a collection that holds a very special place in our hearts.
+                </article>
+            </div><!--bridalCollectionText1-->
+
+            <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/tarboushLookbook6.png" />
+            <img class="lookbook_w100_image tarboushLookbook7 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/tarboushLookbook7.png" />
+        </div><!--BridalSlide2Right-->
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="TarboushLookbookSlide3 width-100">
+    <div class="safearea">
+        <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/tarboushLookbook8.png" />
+        <img class="lookbook_w100_image tarboushLookbook9 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/tarboushLookbook9.png" />
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+
+        <div class="BridalSlideLeft left">
+            <div class="BridalSlide2LeftIMG tarboushLookbook10 anim_opacity0 transition2" style="background-image:url('../../Assets/Images/AllCollection/tarboushLookbook10.png');"></div>
+        </div>
+        <div class="BridalSlideRight TarboushLookbook50w right">
+            <div class="BridalSlide2LeftIMG tarboushLookbook11 anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/tarboushLookbook11.png');"></div>
+        </div><!--BridalSlide2Right-->
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="BridalLookbookSlide2 width-100">
+    <div class="safearea">
+        <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/tarboushLookbook12.png" />
+    </div><!--safearea-->
+</div><!--BridalLookbookSlide2-->
+<div class="homepage_centered_section">
+    <div class="safearea">
+        <div class="collectionCheckContainer width-100">
+            @if (ViewBag.Previous != null)
+            {
+                <a href="@Url.Action(Convert.ToString(ViewBag.Previous),"Collection")" class="collectionPrev left upper CormorantRegular">previous collection</a>
+            }
+
+            @if (ViewBag.Next != null)
+            {
+                <a href="@Url.Action(Convert.ToString(ViewBag.Next),"Collection")" class="collectionPrev right upper CormorantRegular">next collection</a>
+            }
+            <a href="@Url.Action("Index","Category",new { Id = ViewBag.Id, Menu = "Collection" })" class="collectionShop center_left upper CormorantRegular"><div class="bs_fill_dark_orange_collections transition"></div>shop the collection</a>
+            <a href="" class="collectionDownload center_left left upper CormorantRegular">download lookbook</a>
+        </div>
+        <div class="hbox11" style="margin-bottom: 24px;">
+            <div class="hbox11_holder center_both">
+                <div class="hbox11_quote_blurred">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="hbox11_quote">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="doumit_signature"></div>
+            </div><!--hbox11_holder-->
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")

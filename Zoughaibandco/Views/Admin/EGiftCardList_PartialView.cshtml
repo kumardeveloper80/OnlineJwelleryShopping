@@ -1,0 +1,43 @@
+﻿@model List<Zoughaibandco.ViewModel.EGiftCard_VM>
+
+
+@if (Model.Count > 0)
+{
+   
+
+    <ul id="sortable" class="ui-sortable" tablename="GiftCardRequest">
+    @foreach (var eGiftCard in Model)
+    {
+        string paymentStatus = string.Empty;
+
+        if (Convert.ToString(eGiftCard.ReferenceId) != "")
+        {
+            if (Convert.ToBoolean(eGiftCard.IsPaid) == true)
+            {
+                paymentStatus = "Paid";
+            }
+            else
+            {
+                paymentStatus = "Not Paid";
+            }
+        }
+
+
+        <li>
+            <div style="width:100%;">
+                <div style="width:20%; float:left;">@string.Format("{0} {1}", eGiftCard.SenderFirstName, eGiftCard.SenderLastName)</div>
+                <div style="width:15%; float:left;">@paymentStatus</div>
+                <div style="width:30%; float:left;">@eGiftCard.ReferenceId</div>
+                <div>
+                    <a style="position:absolute; right:85px;" href="@Url.Action("EditGiftCard","Admin",new { EGiftCardId = eGiftCard.EGiftCardId})">Edit</a>&nbsp;
+                    <a style="position:absolute; right:15px;" href="javascript:if (confirm('Are you sure you want to delete this E-Gift Card ?')) { DeleteEGiftCard(@eGiftCard.EGiftCardId) }">Delete</a>
+
+                    <div class="smallLoader"></div>
+                </div>
+            </div>
+        </li>
+    }
+    </ul>
+}
+
+

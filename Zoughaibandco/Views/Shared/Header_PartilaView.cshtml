@@ -1,0 +1,441 @@
+﻿<header>
+    <div class="orange_header">
+        <div class="header_customercare">CUSTOMER CARE: <a href="tel:+96171898981">+961 71 89 89 81</a></div>
+        <div class="orange_header_menu">
+            @*<a href="#" class="search_header">
+                <div class="search_icon"></div>
+            </a>*@<!--search_header-->
+
+
+
+            @Html.ActionLink("CONTACT US", "Contact", "Home", null, new { @class = "pink_contact ProximaNovaA-Semibold" })
+            @Html.ActionLink("STORES", "Stores", "Home", null, new { @class = "header_stores ProximaNovaA-Semibold" })
+
+            @if (HttpContext.Current.Session["UserId"] != null && !string.IsNullOrEmpty(Convert.ToString(HttpContext.Current.Session["UserId"])))
+            {
+                <a href="javascript:signout();" class="signin_account ProximaNovaA-Semibold">SIGN OUT</a>
+                <a href="javascript:accessAccount();" class="header_account ProximaNovaA-Semibold">YOUR ACCOUNT</a>
+                <a href="@Url.Action("Cart","Product",null)" class="header_bag">
+                    <div class="bag_icon ProximaNovaA-Semibold">BAG</div>
+                    <span class="header_span_counter ProximaNovaA-Semibold">(<span id="cartItemsCount">0</span>)</span>
+                </a>
+                <a href="@Url.Action("Wishlist","Product",null)" class="header_wishlist">
+                    <div class="wishlist_icon ProximaNovaA-Semibold">WISHLIST</div>
+                    <span class="header_span_counter ProximaNovaA-Semibold">(<span id="widhItemsCount">0</span>)</span>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("GuestCart","Product",null)" class="header_bag">
+                    <div class="bag_icon ProximaNovaA-Semibold">BAG</div>
+                    <span class="header_span_counter ProximaNovaA-Semibold">(<span id="GuestCartItemsCount">0</span>)</span>
+                </a>
+                <a href="@Url.Action("GuestWishlist","Product",null)" class="header_wishlist" style="float: right;padding-left: 10px;margin-right: 10px;border-left: 1px solid #ffffff;cursor: pointer;">
+                    <div class="wishlist_icon ProximaNovaA-Semibold">WISHLIST</div>
+                    <span class="header_span_counter ProximaNovaA-Semibold">(<span id="GuestWidhItemsCount">0</span>)</span>
+                </a>
+                <a href="javascript:login();" class="signin_account ProximaNovaA-Semibold"  style="margin-right: 10px;">SIGN IN</a>
+            }
+            <div class="mobile_header_customercare">CUSTOMER CARE: <a href="tel:+96171898981">+961 71 89 89 81</a></div>
+
+        </div><!--orange_header_menu-->
+    </div><!--orange_header-->
+
+    <div class="white_header">
+        <div class="safearea">
+            <nav class="center_both">
+                <div class="nav_item transition " exp_sb="0">JEWELLERY</div>
+                <a href="@Url.Action("Index","Collection")" class="nav_item transition " exp_sb="2">COLLECTIONS</a>
+                @Html.ActionLink("OUR STORY", "OurStory", "Home", null, new { @class = "nav_item transition", @exp_sb = "-1" })
+                <a href="@Url.Action("Index","Home",null)" class="logo_menu"> </a>
+                @Html.ActionLink("E-GIFT CARD", "ECard", "Home", null, new { @class = "nav_item transition", @exp_sb = "-1" })
+                @Html.ActionLink("HIGH JEWELLERY", "HighEndJewellery", "Home", null, new { @class = "nav_item transition", @exp_sb = "-1" })
+                @Html.ActionLink("FAQs", "FAQS", "Home", null, new { @class = "nav_item transition", @exp_sb = "-1" })
+            </nav>
+
+            <a href="@Url.Action("Index")" class="logo_menu_mobile"> </a>
+        </div><!--safearea-->
+        <div class="burger_menu center_top"></div>
+    </div><!--white_header-->
+
+    <div class="expandable_submenu transition1">
+        <div class="expandable_submenu_preview1">
+            <img src="~/Assets/Images/Header/Website-01.jpg" />
+            <img src="~/Assets/Images/Header/Website-01.jpg" />
+            <img src="~/Assets/Images/Header/Website-02.jpg" />
+            <img src="~/Assets/Images/Header/Website-03.jpg" />
+            <img src="~/Assets/Images/Header/Website-04.jpg" />
+            <img src="~/Assets/Images/Header/Website-05.jpg" />
+            <img src="~/Assets/Images/Header/Website-06.jpg" />
+            <img src="~/Assets/Images/Header/Website-07.jpg" />
+            <img src="~/Assets/Images/Header/Website-08.jpg" />
+            <img src="~/Assets/Images/Header/Website-09.jpg" />
+            <img src="~/Assets/Images/Header/Website-10.jpg" />
+            <img src="~/Assets/Images/Header/Website-11.jpg" />
+            <img src="~/Assets/Images/Header/Website-12.jpg" />
+            <img src="~/Assets/Images/Header/Website-13.jpg" />
+            <img src="~/Assets/Images/Header/Website-14.jpg" />
+        </div><!--expandable_submenu_preview1-->
+
+        <div class="expandable_submenu_content">
+            <div class="expandable_submenu_content_holder center_both">
+                <a href="jewellery.html" class="expandable_submenu_title">JEWELLERY</a>
+                <div class="exm_women_col">
+                    <div class="exm_women_col_label">WOMEN</div>
+                    <a href="jewellery.html">BRACELETS</a>
+                    <a href="jewellery.html">EARRINGS</a>
+                    <a href="jewellery.html">NECKLACES</a>
+                    <a href="jewellery.html">RINGS</a>
+                </div><!--exm_women_col-->
+
+                <div class="exm_line_separator center_left"></div>
+
+                <div class="exm_men_col">
+                    <div class="exm_men_col_label">MEN</div>
+                    <a href="jewellery.html">BRACELETS</a>
+                    <a href="jewellery.html">NECKLACES</a>
+                    <a href="jewellery.html">CUFFLINGS</a>
+                    <a href="jewellery.html">RINGS</a>
+                </div><!--exm_women_col-->
+
+            </div><!--expandable_submenu_content_holder-->
+        </div><!--expandable_submenu_content-->
+
+        <div class="expandable_submenu_preview2">
+            <img src="~/Assets/Images/Header/Website-01.jpg" />
+            <img src="~/Assets/Images/Header/Website-02.jpg" />
+            <img src="~/Assets/Images/Header/Website-03.jpg" />
+            <img src="~/Assets/Images/Header/Website-04.jpg" />
+            <img src="~/Assets/Images/Header/Website-05.jpg" />
+            <img src="~/Assets/Images/Header/Website-06.jpg" />
+            <img src="~/Assets/Images/Header/Website-07.jpg" />
+            <img src="~/Assets/Images/Header/Website-08.jpg" />
+            <img src="~/Assets/Images/Header/Website-09.jpg" />
+            <img src="~/Assets/Images/Header/Website-10.jpg" />
+            <img src="~/Assets/Images/Header/Website-11.jpg" />
+            <img src="~/Assets/Images/Header/Website-12.jpg" />
+            <img src="~/Assets/Images/Header/Website-13.jpg" />
+            <img src="~/Assets/Images/Header/Website-14.jpg" />
+        </div><!--expandable_submenu_preview2-->
+
+    </div><!--expandable_submenu-->
+
+    <div class="JewelleryContent">
+        <div class="expandable_submenu_preview1">
+            <img src="~/Assets/Images/Header/Website-01.jpg" />
+            <img src="~/Assets/Images/Header/Website-02.jpg" />
+            <img src="~/Assets/Images/Header/Website-03.jpg" />
+            <img src="~/Assets/Images/Header/Website-04.jpg" />
+            <img src="~/Assets/Images/Header/Website-05.jpg" />
+            <img src="~/Assets/Images/Header/Website-06.jpg" />
+            <img src="~/Assets/Images/Header/Website-07.jpg" />
+            <img src="~/Assets/Images/Header/Website-08.jpg" />
+            <img src="~/Assets/Images/Header/Website-09.jpg" />
+            <img src="~/Assets/Images/Header/Website-10.jpg" />
+            <img src="~/Assets/Images/Header/Website-11.jpg" />
+            <img src="~/Assets/Images/Header/Website-12.jpg" />
+            <img src="~/Assets/Images/Header/Website-13.jpg" />
+            <img src="~/Assets/Images/Header/Website-14.jpg" />
+        </div><!--expandable_submenu_preview1-->
+
+        <div class="expandable_submenu_content">
+            <div class="expandable_submenu_content_holder center_both">
+                <a href="@Url.Action("Index","Jewellery")" class="expandable_submenu_title">JEWELLERY</a>
+                <div class="exm_women_col" id="womenJwlDiv">
+                    @*<div class="exm_women_col_label">WOMEN</div>
+                        <a href="Category/4/Women_Bracelets.html">BRACELETS</a>
+                        <a href="Category/6/Women_Earrings.html">EARRINGS</a>
+                        <a href="Category/7/Women_Necklaces.html">NECKLACES</a>
+                        <a href="Category/8/Women_Rings.html">RINGS</a>*@
+                </div><!--exm_women_col-->
+
+                <div class="exm_line_separator center_left"></div>
+
+                <div class="exm_men_col" id="menJwlDiv">
+                    @*<div class="exm_men_col_label">MEN</div>
+                        <a href="Category/9/Men_Bracelets.html">BRACELETS</a>
+                        <a href="Category/11/Men_Necklaces.html">NECKLACES</a>
+                        <a href="Category/10/Men_Cufflings.html">CUFFLINGS</a>
+                        <a href="Category/12/Men_Rings.html">RINGS</a>*@
+                </div><!--exm_women_col-->
+
+            </div><!--expandable_submenu_content_holder-->
+        </div><!--expandable_submenu_content-->
+
+        <div class="expandable_submenu_preview2">
+            <img src="~/Assets/Images/Header/Website-01.jpg" />
+            <img src="~/Assets/Images/Header/Website-02.jpg" />
+            <img src="~/Assets/Images/Header/Website-03.jpg" />
+            <img src="~/Assets/Images/Header/Website-04.jpg" />
+            <img src="~/Assets/Images/Header/Website-05.jpg" />
+            <img src="~/Assets/Images/Header/Website-06.jpg" />
+            <img src="~/Assets/Images/Header/Website-07.jpg" />
+            <img src="~/Assets/Images/Header/Website-08.jpg" />
+            <img src="~/Assets/Images/Header/Website-09.jpg" />
+            <img src="~/Assets/Images/Header/Website-10.jpg" />
+            <img src="~/Assets/Images/Header/Website-11.jpg" />
+            <img src="~/Assets/Images/Header/Website-12.jpg" />
+            <img src="~/Assets/Images/Header/Website-13.jpg" />
+            <img src="~/Assets/Images/Header/Website-14.jpg" />
+        </div><!--expandable_submenu_preview2-->
+
+    </div><!--expandable_submenu-->
+
+    <div class="BridalContent">
+        <div class="expandable_submenu_preview1">
+            <img src="~/Assets/Images/Header/Artboard1.png" />
+            <img src="~/Assets/Images/Header/Artboard2.png" />
+            <img src="~/Assets/Images/Header/Artboard3.png" />
+            <img src="~/Assets/Images/Header/Artboard4.png" />
+            <img src="~/Assets/Images/Header/Artboard5.png" />
+            <img src="~/Assets/Images/Header/Artboard6.png" />
+            <img src="~/Assets/Images/Header/Artboard7.png" />
+            <img src="~/Assets/Images/Header/Artboard8.png" />
+            <img src="~/Assets/Images/Header/Artboard10.png" />
+            <img src="~/Assets/Images/Header/Artboard11.png" />
+            <img src="~/Assets/Images/Header/Artboard12.png" />
+        </div><!--expandable_submenu_preview1-->
+
+        <div class="expandable_submenu_content">
+            <div class="expandable_submenu_content_holder center_both">
+                <a href="Category/29/Bridal.html" class="expandable_submenu_title">BRIDAL</a>
+                <div class="exm_full_col">
+                    <a href="Category/30/Engagement_Rings.html">ENGAGEMENT RINGS</a>
+                    <a href="Category/31/Wedding_Bands.html">WEDDING BANDS</a>
+                    <a href="Category/32/Wedding_Sets.html">WEDDING SETS</a>
+                </div><!--exm_women_col-->
+            </div><!--expandable_submenu_content_holder-->
+        </div><!--expandable_submenu_content-->
+
+        <div class="expandable_submenu_preview2">
+            <img src="~/Assets/Images/Header/Artboard1.png" />
+            <img src="~/Assets/Images/Header/Artboard2.png" />
+            <img src="~/Assets/Images/Header/Artboard3.png" />
+            <img src="~/Assets/Images/Header/Artboard4.png" />
+            <img src="~/Assets/Images/Header/Artboard5.png" />
+            <img src="~/Assets/Images/Header/Artboard6.png" />
+            <img src="~/Assets/Images/Header/Artboard7.png" />
+            <img src="~/Assets/Images/Header/Artboard8.png" />
+            <img src="~/Assets/Images/Header/Artboard10.png" />
+            <img src="~/Assets/Images/Header/Artboard11.png" />
+            <img src="~/Assets/Images/Header/Artboard12.png" />
+        </div><!--expandable_submenu_preview2-->
+
+    </div><!--expandable_submenu-->
+
+    <div class="CollectionsContent">
+        <div class="expandable_submenu_preview1">
+            <img src="~/Assets/Images/Header/Artboard2col.png" />
+            <img src="~/Assets/Images/Header/Artboard3col.png" />
+            <img src="~/Assets/Images/Header/Artboard4col.png" />
+            <img src="~/Assets/Images/Header/Artboard5col.png" />
+            <img src="~/Assets/Images/Header/Artboard6col.png" />
+            <img src="~/Assets/Images/Header/Artboard7col.png" />
+            <img src="~/Assets/Images/Header/Artboard8col.png" />
+            <img src="~/Assets/Images/Header/Artboard9col.png" />
+            <img src="~/Assets/Images/Header/Artboard10col.png" />
+            <img src="~/Assets/Images/Header/Artboard11col.png" />
+            <img src="~/Assets/Images/Header/Artboardcol1.png" />
+        </div><!--expandable_submenu_preview1-->
+
+        <div class="expandable_submenu_content">
+            <div class="expandable_submenu_content_holder center_both">
+                <a href="@Url.Action("Index","Collection")" class="expandable_submenu_title">COLLECTIONS</a>
+                <div class="exm_women_col leftSide">
+                    @*<a href="@Url.Action("Index","Collection")">ALL COLLECTIONS</a>
+                        <a href="@Url.Action("Arrow","Collection")">ARROW</a>
+                        <a href="@Url.Action("Classic","Collection")">CLASSIC</a>
+                        <a href="@Url.Action("Crown","Collection")">CROWN</a>
+                        <a href="@Url.Action("Emblem","Collection")">EMBLEM</a>
+                        <a href="@Url.Action("Tarsboush","Collection")">TARBOUSH</a>*@
+                </div><!--exm_women_col-->
+
+                <div class="exm_line_separator center_left" style="top:50px;"></div>
+
+                <div class="exm_men_col rightSide">
+                    @*<a href="@Url.Action("EmblemLove","Collection")">EMBLEM LOVE</a>
+                        <a href="@Url.Action("Leaves","Collection")">LEAVES</a>
+                        <a href="@Url.Action("Lotus","Collection")">LOTUS</a>
+                        <a href="@Url.Action("Bridal","Collection")">BRIDAL</a>*@
+                </div><!--exm_women_col-->
+
+            </div><!--expandable_submenu_content_holder-->
+        </div><!--expandable_submenu_content-->
+
+        <div class="expandable_submenu_preview2">
+            <img src="~/Assets/Images/Header/Artboard2col.png" />
+            <img src="~/Assets/Images/Header/Artboard3col.png" />
+            <img src="~/Assets/Images/Header/Artboard4col.png" />
+            <img src="~/Assets/Images/Header/Artboard5col.png" />
+            <img src="~/Assets/Images/Header/Artboard6col.png" />
+            <img src="~/Assets/Images/Header/Artboard7col.png" />
+            <img src="~/Assets/Images/Header/Artboard8col.png" />
+            <img src="~/Assets/Images/Header/Artboard9col.png" />
+            <img src="~/Assets/Images/Header/Artboard10col.png" />
+            <img src="~/Assets/Images/Header/Artboard11col.png" />
+            <img src="~/Assets/Images/Header/Artboardcol1.png" />
+        </div><!--expandable_submenu_preview2-->
+
+    </div><!--expandable_submenu-->
+
+    <div class="header_shadow"></div>
+</header>
+
+<div class="mobile_menu">
+    <div class="width-100 center_top mobile_menu_holder">
+
+        <div class="mobile_menu_item">
+            <label>JEWELLERY</label>
+            <div class="center_left mobile_menu_arrow"></div>
+            <div class="mobile_sub_menu">
+                <div class="exp_mobile_sub_menu center_left">
+                    <div class="exm_women_col" id="womenJwlMobDiv">
+                        @*<div class="exm_women_col_label">WOMEN</div>
+                            <a href="Category/4/Women_Bracelets.html">BRACELETS</a>
+                            <a href="Category/6/Women_Earrings.html">EARRINGS</a>
+                            <a href="Category/7/Women_Necklaces.html">NECKLACES</a>
+                            <a href="Category/8/Women_Rings.html">RINGS</a>*@
+                    </div><!--exm_women_col-->
+
+                    <div class="exm_line_separator center_left"></div>
+
+                    <div class="exm_men_col" id="menJwlMobDiv">
+                        @*<div class="exm_men_col_label">MEN</div>
+                            <a href="Category/9/Men_Bracelets.html">BRACELETS</a>
+                            <a href="Category/10/Men_Earrings.html">NECKLACES</a>
+                            <a href="Category/11/Men_Necklaces.html">CUFFLINGS</a>
+                            <a href="Category/12/Men_Rings.html">RINGS</a>*@
+                    </div><!--exm_women_col-->
+                </div><!--exp_mobile_sub_menu-->
+            </div><!--mobile_sub_menu-->
+        </div>
+        <!--
+        <div class="mobile_menu_item">
+            <label>BRIDAL</label>
+            <div class="center_left mobile_menu_arrow"></div>
+            <div class="mobile_sub_menu">
+                <div class="exp_mobile_sub_menu center_left">
+                    <a href="/Category/29/Bridal" class="exm_women_col_label">BRIDAL</a>
+                    <div class="exm_full_col">
+                        <a href="/Category/30/Engagement_Rings">ENGAGEMENT RINGS</a>
+                        <a href="/Category/31/Wedding_Bands">WEDDING BANDS</a>
+                        <a href="/Category/32/Wedding_Sets">WEDDING SETS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        @*<a href="FAQ.html" class="mobile_menu_item_a">FAQs</a>*@
+        <a href="@Url.Action("FAQS","Home")" class="mobile_menu_item_a">FAQs</a>
+        <div class="mobile_menu_item">
+            <label>COLLECTIONS</label>
+            <div class="center_left mobile_menu_arrow"></div>
+            <div class="mobile_sub_menu mobile_sub_menu_collection">
+                <div class="exp_mobile_sub_menu center_left">
+                    <a href="@Url.Action("Index","Collection")" class="exm_women_col_label">COLLECTIONS</a>
+                    <div class="exm_full_col  mobCollection">
+                        @*<a href="@Url.Action("Arrow","Collection")">ARROW COLLECTION</a>
+                            <a href="@Url.Action("Classic","Collection")">CLASSIC COLLECTION</a>
+                            <a href="@Url.Action("Crown","Collection")">CROWN COLLECTION</a>
+                            <a href="@Url.Action("Emblem","Collection")">EMBLEM COLLECTION</a>
+                            <a href="@Url.Action("EmblemLove","Collection")">EMBLEM LOVE COLLECTION</a>
+                            <a href="@Url.Action("Leaves","Collection")">LEAVES COLLECTION</a>
+                            <a href="@Url.Action("Lotus","Collection")">LOTUS COLLECTION</a>
+                            <a href="@Url.Action("Bridal","Collection")">BRIDAL COLLECTION</a>
+                            <a href="@Url.Action("Tarsboush","Collection")">TARBOUSH COLLECTION</a>*@
+                    </div><!--exm_women_col-->
+                </div><!--exp_mobile_sub_menu-->
+            </div><!--mobile_sub_menu-->
+        </div>
+        @Html.ActionLink("HIGH END JEWELLERY", "HighEndJewellery", "Home", null, new { @class = "mobile_menu_item_a" })
+        @Html.ActionLink("E-GIFT CARD", "ECard", "Home", null, new { @class = "mobile_menu_item_a" })
+        @Html.ActionLink("OUR STORY", "OurStory", "Home", null, new { @class = "mobile_menu_item_a" })
+        @Html.ActionLink("CONTACT US", "Contact", "Home", null, new { @class = "mobile_menu_item_a" })
+
+    </div><!--mobile_menu_holder-->
+    <div class="mob_menu_close"></div>
+</div><!--mobile_menu-->
+@*<script src="~/Scripts/jquery10.js"></script>*@
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+<script src="~/Scripts/Product.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var isGuest = '@HttpContext.Current.Session["GusetLogin"]';
+        if (isGuest.toLowerCase() == 'true') {
+            var CartCount = '@HttpContext.Current.Session["CartCount"]';
+            var WishCount = '@HttpContext.Current.Session["WishCount"]';
+            $("#GuestCartItemsCount").html(CartCount);
+            $("#GuestWidhItemsCount").html(WishCount);
+        }
+    });
+    var routeURL = location.protocol + '//' + location.host;
+    $.ajax({
+        url: routeURL + '/api/AjaxCall/GetCollectionForMenu',
+        type: 'GET',
+        success: function (data) {
+            if (data.status == 1) {
+                var leftString = '<a href=/Collection/Index>ALL COLLECTIONS</a>';
+                var rightString = "";
+                var mobString = "";
+                for (var i = 0; i < data.dataenum.length; i++) {
+                    if (data.dataenum[i].IsAdminAdded == true) {
+                        mobString += '<a href=/Collection/Collection/' + data.dataenum[i].CollectionId + '>' + data.dataenum[i].CollectionName + ' COLLECTION</a>';
+                        if (data.dataenum[i].Side == "left") {
+                            leftString += '<a href=/Collection/Collection/' + data.dataenum[i].CollectionId + '>' + data.dataenum[i].CollectionName + '</a>';
+                        }
+                        else {
+                            rightString += '<a href=/Collection/Collection/' + data.dataenum[i].CollectionId + '>' + data.dataenum[i].CollectionName + '</a>';
+                        }
+                    }
+                    else {
+                        mobString += '<a href=/Collection/' + data.dataenum[i].RouteName + '>' + data.dataenum[i].CollectionName + ' COLLECTION</a>';
+                        if (data.dataenum[i].Side == "left") {
+                            leftString += '<a href=/Collection/' + data.dataenum[i].RouteName + '>' + data.dataenum[i].CollectionName + '</a>';
+                        }
+                        else {
+                            rightString += '<a href=/Collection/' + data.dataenum[i].RouteName + '>' + data.dataenum[i].CollectionName + '</a>';
+                        }
+                    }
+                }
+                $(".leftSide").html(leftString);
+                $(".rightSide").html(rightString);
+                $(".mobCollection").html(mobString);
+            }
+        }
+    });
+
+    $.ajax({
+        url: routeURL + '/api/AjaxCall/GetJewellery',
+        type: 'GET',
+        success: function (data) {
+            if (data.status == 1 && data.dataenum != null) {
+                var menJwl = '<div class="exm_men_col_label">MEN</div>';
+                var womenJwl = '<div class="exm_women_col_label">WOMEN</div>';
+                for (var i = 0; i < data.dataenum.length; i++) {
+                    if (data.dataenum[i].Type == "men") {
+                        menJwl += '<a href="/Category/Index/?Id=' + data.dataenum[i].Id + '&&Menu=Jewellery">' + data.dataenum[i].CategoryName.toUpperCase() + '</a>';
+                    }
+
+                    if (data.dataenum[i].Type == "women") {
+                        womenJwl += '<a href="/Category/Index/?Id=' + data.dataenum[i].Id + '&&Menu=Jewellery">' + data.dataenum[i].CategoryName.toUpperCase() + '</a>';
+                    }
+                }
+                $("#menJwlMobDiv").html(menJwl);
+                $("#womenJwlMobDiv").html(womenJwl);
+                $("#menJwlDiv").html(menJwl);
+                $("#womenJwlDiv").html(womenJwl);
+            }
+        }
+    });
+
+    function accessAccount() {
+        var UserId = ' @HttpContext.Current.Session["UserId"] ';
+        if (UserId > 0) {
+            window.location = "/Home/SignUp";
+        }
+        else {
+            $(".login_popup").fadeIn(200);
+        }
+    }
+</script>

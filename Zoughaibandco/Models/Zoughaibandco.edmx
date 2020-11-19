@@ -1,0 +1,1040 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Zoughaibandco_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImgName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Careers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Position" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="AboutUs" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="64" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="64" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" />
+          <Property Name="AllowToUsePlateform" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="RouteName" Type="nvarchar(max)" />
+          <Property Name="BannersId" Type="int" />
+          <Property Name="Order" Type="int" />
+          <Property Name="Side" Type="nvarchar(max)" />
+          <Property Name="BackgroundImage" Type="nvarchar(max)" />
+          <Property Name="ForegroundImage" Type="nvarchar(max)" />
+          <Property Name="IsAdminAdded" Type="bit" Nullable="false" />
+          <Property Name="LogoImage" Type="nvarchar(max)" />
+          <Property Name="PageImage1" Type="nvarchar(max)" />
+          <Property Name="PageImage2" Type="nvarchar(max)" />
+          <Property Name="PageImage3" Type="nvarchar(max)" />
+          <Property Name="PageImage4" Type="nvarchar(max)" />
+          <Property Name="PageImage5" Type="nvarchar(max)" />
+          <Property Name="PageImage6" Type="nvarchar(max)" />
+          <Property Name="PageImage7" Type="nvarchar(max)" />
+          <Property Name="PageImage8" Type="nvarchar(max)" />
+          <Property Name="AboutText" Type="nvarchar(max)" />
+          <Property Name="BreadCrumColor" Type="nvarchar" MaxLength="16" />
+          <Property Name="LookBookColor" Type="nvarchar" MaxLength="16" />
+          <Property Name="LookBookBorderColor" Type="nvarchar" MaxLength="16" />
+          <Property Name="ShopTheCollectionTextColor" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColorsName" Type="nvarchar(max)" />
+          <Property Name="ProductId" Type="int" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Messsage" Type="nvarchar(max)" />
+          <Property Name="IsRead" Type="bit" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EGiftCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ToEmail" Type="nvarchar(max)" />
+          <Property Name="ToFirstName" Type="nvarchar(max)" />
+          <Property Name="ToLastName" Type="nvarchar(max)" />
+          <Property Name="DeliverDate" Type="datetime" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsPaid" Type="bit" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsDeliver" Type="bit" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="ToPhoneNo" Type="nvarchar(max)" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="Referenceid" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="ReferenceId" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsGuest" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDeliveryDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="PrimaryAddress" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="SecondaryAddress" Type="nvarchar(max)" />
+          <Property Name="PrimaryPhoneNo" Type="nvarchar(max)" />
+          <Property Name="SecondaryPhoneNo" Type="nvarchar(max)" />
+          <Property Name="AdditionalInformation" Type="nvarchar(max)" />
+          <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryTime" Type="nchar" MaxLength="10" />
+          <Property Name="DeliveryAddress" Type="nvarchar(max)" />
+          <Property Name="DeliveryMessage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProductName" Type="nvarchar(max)" />
+          <Property Name="OrderQy" Type="int" />
+          <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProductId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Pictures">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PictureName" Type="nvarchar(max)" />
+          <Property Name="ProductId" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="CollectionId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Materials" Type="nvarchar" MaxLength="150" />
+          <Property Name="GoldWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Round" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Marquis" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Ruby" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Sapphire" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emerald" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Fancy" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Princes" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Baguette" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Triangle" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Pear" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="black" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="semiprecious" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="diamond" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PriceDiscounted" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ImageName" Type="nvarchar(max)" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="SubCategoryId" Type="int" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="UpdatedDate" Type="date" />
+          <Property Name="DeletedDate" Type="date" />
+          <Property Name="Priceold" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Brown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SP" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsParent" Type="bit" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="ReferenceNO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductCart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCartDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="ProductCartId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCartDetailsGuest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="ProductCartGuestId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCartGuest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuestUserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductWishList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductWishListGuest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="GuestUserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StoreAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreName" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="nvarchar(max)" />
+          <Property Name="Telephone" Type="nvarchar(max)" />
+          <Property Name="StoreLocatorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StoreLocator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryName" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_StoreAddress_StoreLocator">
+          <End Role="StoreLocator" Type="Self.StoreLocator" Multiplicity="1" />
+          <End Role="StoreAddress" Type="Self.StoreAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreLocator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StoreAddress">
+              <PropertyRef Name="StoreLocatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Zoughaibandco_DBModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Careers" EntityType="Self.Careers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EGiftCard" EntityType="Self.EGiftCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDeliveryDetails" EntityType="Self.OrderDeliveryDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCart" EntityType="Self.ProductCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCartDetails" EntityType="Self.ProductCartDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCartDetailsGuest" EntityType="Self.ProductCartDetailsGuest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCartGuest" EntityType="Self.ProductCartGuest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductWishList" EntityType="Self.ProductWishList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductWishListGuest" EntityType="Self.ProductWishListGuest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StoreAddress" EntityType="Self.StoreAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StoreLocator" EntityType="Self.StoreLocator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_StoreAddress_StoreLocator" Association="Self.FK_StoreAddress_StoreLocator">
+            <End Role="StoreLocator" EntitySet="StoreLocator" />
+            <End Role="StoreAddress" EntitySet="StoreAddress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Zoughaibandco_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Messsage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsRead" Type="Boolean" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Zoughaibandco_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Careers" EntityType="Zoughaibandco_DBModel.Career" />
+          <EntitySet Name="StoreAddresses" EntityType="Zoughaibandco_DBModel.StoreAddress" />
+          <EntitySet Name="StoreLocators" EntityType="Zoughaibandco_DBModel.StoreLocator" />
+          <AssociationSet Name="FK_StoreAddress_StoreLocator" Association="Zoughaibandco_DBModel.FK_StoreAddress_StoreLocator">
+            <End Role="StoreLocator" EntitySet="StoreLocators" />
+            <End Role="StoreAddress" EntitySet="StoreAddresses" />
+          </AssociationSet>
+          <EntitySet Name="Banners" EntityType="Zoughaibandco_DBModel.Banner" />
+          <EntitySet Name="Clients" EntityType="Zoughaibandco_DBModel.Client" />
+          <EntitySet Name="Collections" EntityType="Zoughaibandco_DBModel.Collection" />
+          <EntitySet Name="Colors" EntityType="Zoughaibandco_DBModel.Color" />
+          <EntitySet Name="Pictures" EntityType="Zoughaibandco_DBModel.Picture" />
+          <EntitySet Name="SubCategories" EntityType="Zoughaibandco_DBModel.SubCategory" />
+          <EntitySet Name="Categories" EntityType="Zoughaibandco_DBModel.Category" />
+          <EntitySet Name="ProductWishLists" EntityType="Zoughaibandco_DBModel.ProductWishList" />
+          <EntitySet Name="ProductCartDetails" EntityType="Zoughaibandco_DBModel.ProductCartDetail" />
+          <EntitySet Name="ProductCarts" EntityType="Zoughaibandco_DBModel.ProductCart" />
+          <EntitySet Name="Admins" EntityType="Zoughaibandco_DBModel.Admin" />
+          <EntitySet Name="EGiftCards" EntityType="Zoughaibandco_DBModel.EGiftCard" />
+          <EntitySet Name="Orders" EntityType="Zoughaibandco_DBModel.Order" />
+          <EntitySet Name="OrderDeliveryDetails" EntityType="Zoughaibandco_DBModel.OrderDeliveryDetail" />
+          <EntitySet Name="ProductCartDetailsGuests" EntityType="Zoughaibandco_DBModel.ProductCartDetailsGuest" />
+          <EntitySet Name="ProductCartGuests" EntityType="Zoughaibandco_DBModel.ProductCartGuest" />
+          <EntitySet Name="ProductWishListGuests" EntityType="Zoughaibandco_DBModel.ProductWishListGuest" />
+          <EntitySet Name="OrderDetails" EntityType="Zoughaibandco_DBModel.OrderDetail" />
+          <EntitySet Name="Products" EntityType="Zoughaibandco_DBModel.Product" />
+        </EntityContainer>
+        <EntityType Name="Career">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AboutUs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="StoreAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StoreLocatorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StoreLocator" Relationship="Zoughaibandco_DBModel.FK_StoreAddress_StoreLocator" FromRole="StoreAddress" ToRole="StoreLocator" />
+        </EntityType>
+        <EntityType Name="StoreLocator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StoreAddresses" Relationship="Zoughaibandco_DBModel.FK_StoreAddress_StoreLocator" FromRole="StoreLocator" ToRole="StoreAddress" />
+        </EntityType>
+        <Association Name="FK_StoreAddress_StoreLocator">
+          <End Type="Zoughaibandco_DBModel.StoreLocator" Role="StoreLocator" Multiplicity="1" />
+          <End Type="Zoughaibandco_DBModel.StoreAddress" Role="StoreAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoreLocator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StoreAddress">
+              <PropertyRef Name="StoreLocatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImgName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="AllowToUsePlateform" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="RouteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BannersId" Type="Int32" />
+          <Property Name="Order" Type="Int32" />
+          <Property Name="Side" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BackgroundImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ForegroundImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdminAdded" Type="Boolean" Nullable="false" />
+          <Property Name="PageImage1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageImage2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageImage3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageImage4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageImage5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageImage6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageImage7" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageImage8" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AboutText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogoImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BreadCrumColor" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="LookBookColor" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="LookBookBorderColor" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ShopTheCollectionTextColor" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColorsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PictureName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductWishList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCartDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="ProductCartId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EGiftCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ToEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ToFirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ToLastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliverDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPaid" Type="Boolean" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeliver" Type="Boolean" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="ToPhoneNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          
+          <Property Name="Referenceid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EmailId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsGuest" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDeliveryDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="PrimaryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondaryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryPhoneNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryPhoneNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInformation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductCartDetailsGuest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="ProductCartGuestId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCartGuest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestUserId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductWishListGuest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="GuestUserId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderQy" Type="Int32" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CollectionId" Type="Int32" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Materials" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GoldWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Round" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Marquis" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Ruby" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Sapphire" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Emerald" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Fancy" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Princes" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Baguette" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Triangle" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Pear" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="black" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="semiprecious" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="diamond" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PriceDiscounted" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="SubCategoryId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="0" />
+          <Property Name="Priceold" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Brown" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SP" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsParent" Type="Boolean" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="ReferenceNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Zoughaibandco_DBModelStoreContainer" CdmEntityContainer="Zoughaibandco_DBEntities">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Messsage" ColumnName="Messsage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Careers">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Career">
+              <MappingFragment StoreEntitySet="Careers">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AboutUs" ColumnName="AboutUs" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoreAddresses">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.StoreAddress">
+              <MappingFragment StoreEntitySet="StoreAddress">
+                <ScalarProperty Name="StoreLocatorID" ColumnName="StoreLocatorID" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoreLocators">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.StoreLocator">
+              <MappingFragment StoreEntitySet="StoreLocator">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banners">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Banner">
+              <MappingFragment StoreEntitySet="Banners">
+                <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AllowToUsePlateform" ColumnName="AllowToUsePlateform" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Collections">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Collection">
+              <MappingFragment StoreEntitySet="Collection">
+                <ScalarProperty Name="ShopTheCollectionTextColor" ColumnName="ShopTheCollectionTextColor" />
+                <ScalarProperty Name="LookBookBorderColor" ColumnName="LookBookBorderColor" />
+                <ScalarProperty Name="LookBookColor" ColumnName="LookBookColor" />
+                <ScalarProperty Name="BreadCrumColor" ColumnName="BreadCrumColor" />
+                <ScalarProperty Name="LogoImage" ColumnName="LogoImage" />
+                <ScalarProperty Name="AboutText" ColumnName="AboutText" />
+                <ScalarProperty Name="PageImage8" ColumnName="PageImage8" />
+                <ScalarProperty Name="PageImage7" ColumnName="PageImage7" />
+                <ScalarProperty Name="PageImage6" ColumnName="PageImage6" />
+                <ScalarProperty Name="PageImage5" ColumnName="PageImage5" />
+                <ScalarProperty Name="PageImage4" ColumnName="PageImage4" />
+                <ScalarProperty Name="PageImage3" ColumnName="PageImage3" />
+                <ScalarProperty Name="PageImage2" ColumnName="PageImage2" />
+                <ScalarProperty Name="PageImage1" ColumnName="PageImage1" />
+                <ScalarProperty Name="IsAdminAdded" ColumnName="IsAdminAdded" />
+                <ScalarProperty Name="ForegroundImage" ColumnName="ForegroundImage" />
+                <ScalarProperty Name="BackgroundImage" ColumnName="BackgroundImage" />
+                <ScalarProperty Name="Side" ColumnName="Side" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="BannersId" ColumnName="BannersId" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ColorsName" ColumnName="ColorsName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Picture">
+              <MappingFragment StoreEntitySet="Pictures">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PictureName" ColumnName="PictureName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductWishLists">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.ProductWishList">
+              <MappingFragment StoreEntitySet="ProductWishList">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCartDetails">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.ProductCartDetail">
+              <MappingFragment StoreEntitySet="ProductCartDetails">
+                <ScalarProperty Name="ProductCartId" ColumnName="ProductCartId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCarts">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.ProductCart">
+              <MappingFragment StoreEntitySet="ProductCart">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EGiftCards">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.EGiftCard">
+              <MappingFragment StoreEntitySet="EGiftCard">
+                <ScalarProperty Name="Referenceid" ColumnName="Referenceid" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="ToPhoneNo" ColumnName="ToPhoneNo" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsDeliver" ColumnName="IsDeliver" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DeliverDate" ColumnName="DeliverDate" />
+                <ScalarProperty Name="ToLastName" ColumnName="ToLastName" />
+                <ScalarProperty Name="ToFirstName" ColumnName="ToFirstName" />
+                <ScalarProperty Name="ToEmail" ColumnName="ToEmail" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IsGuest" ColumnName="IsGuest" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDeliveryDetails">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.OrderDeliveryDetail">
+              <MappingFragment StoreEntitySet="OrderDeliveryDetails">
+                <ScalarProperty Name="DeliveryMessage" ColumnName="DeliveryMessage" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+                <ScalarProperty Name="SecondaryPhoneNo" ColumnName="SecondaryPhoneNo" />
+                <ScalarProperty Name="PrimaryPhoneNo" ColumnName="PrimaryPhoneNo" />
+                <ScalarProperty Name="SecondaryAddress" ColumnName="SecondaryAddress" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="PrimaryAddress" ColumnName="PrimaryAddress" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCartDetailsGuests">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.ProductCartDetailsGuest">
+              <MappingFragment StoreEntitySet="ProductCartDetailsGuest">
+                <ScalarProperty Name="ProductCartGuestId" ColumnName="ProductCartGuestId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCartGuests">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.ProductCartGuest">
+              <MappingFragment StoreEntitySet="ProductCartGuest">
+                <ScalarProperty Name="GuestUserId" ColumnName="GuestUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductWishListGuests">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.ProductWishListGuest">
+              <MappingFragment StoreEntitySet="ProductWishListGuest">
+                <ScalarProperty Name="GuestUserId" ColumnName="GuestUserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="OrderQy" ColumnName="OrderQy" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Zoughaibandco_DBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ReferenceNO" ColumnName="ReferenceNO" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+                <ScalarProperty Name="SP" ColumnName="SP" />
+                <ScalarProperty Name="Brown" ColumnName="Brown" />
+                <ScalarProperty Name="Priceold" ColumnName="Priceold" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="PriceDiscounted" ColumnName="PriceDiscounted" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="diamond" ColumnName="diamond" />
+                <ScalarProperty Name="semiprecious" ColumnName="semiprecious" />
+                <ScalarProperty Name="black" ColumnName="black" />
+                <ScalarProperty Name="Pear" ColumnName="Pear" />
+                <ScalarProperty Name="Triangle" ColumnName="Triangle" />
+                <ScalarProperty Name="Baguette" ColumnName="Baguette" />
+                <ScalarProperty Name="Princes" ColumnName="Princes" />
+                <ScalarProperty Name="Fancy" ColumnName="Fancy" />
+                <ScalarProperty Name="Emerald" ColumnName="Emerald" />
+                <ScalarProperty Name="Sapphire" ColumnName="Sapphire" />
+                <ScalarProperty Name="Ruby" ColumnName="Ruby" />
+                <ScalarProperty Name="Marquis" ColumnName="Marquis" />
+                <ScalarProperty Name="Round" ColumnName="Round" />
+                <ScalarProperty Name="GoldWeight" ColumnName="GoldWeight" />
+                <ScalarProperty Name="Materials" ColumnName="Materials" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CollectionId" ColumnName="CollectionId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

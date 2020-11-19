@@ -1,0 +1,139 @@
+﻿@model Zoughaibandco.ViewModel.Collection_VM
+
+<div class="collectionsSLide1 width-100" style="background-image: url('../../Assets/Images/AllCollection/@Model.BackgroundImage')">
+    <div class="safeareaProducts left center_left">
+        <div class="breadCrumb breadCrumbCollections right">
+            <span style="font-size:12px;" class="ProximaNovaA-Regular">
+                @if (Model.Breadcrumcolour != "")
+                {
+                    <a style="color:@Model.Breadcrumcolour" href="@Url.Action("Index", "Home", null)">HOME /</a>
+                    <a style="color:@Model.Breadcrumcolour" href="@Url.Action("Index", "Collection", null)">COLLECTIONS /</a>
+                    <span style="color:@Model.Breadcrumcolour">@Model.CollectionName COLLECTION</span>
+                }
+                else
+                {
+                    <a style="color:white;" href="@Url.Action("Index", "Home", null)">HOME /</a>
+                    <a style="color:white;" href="@Url.Action("Index", "Collection", null)">COLLECTIONS /</a>
+                    <span style="color:white;">@Model.CollectionName COLLECTION</span>
+                }
+            </span>
+        </div>
+        <div class="collectionsimg1 arrowcollectionsimg1 left" style="background-image: url('../../Assets/Images/AllCollection/@Model.ForegroundImage')"></div>
+        <div class="collectionsSlide1Content center_top">
+            @{
+                string styles = "";
+                if (Model.LookBookTextcolour != "")
+                {
+                    styles = "color:" + Model.LookBookTextcolour;
+                }
+
+                if (Model.LookBookBorderColor != "")
+                {
+                    styles = "border-bottom: 1px solid " + Model.LookBookBorderColor;
+                }
+
+                if (styles != "")
+                {
+                    <span style="@styles" class="lookbook upper width-100 ProximaNovaA-Regular">lookbook</span>
+                }
+                else
+                {
+                    <span class="lookbook upper width-100 ProximaNovaA-Regular">lookbook</span>
+                }
+            }
+            <h2 class="width-100 upper" style="background-image: url(../../Assets/Images/Others/@Model.LogoImage);background-repeat: no-repeat;background-position: right center;height: 135px;float: right;"></h2>
+            <a class="shopCollectionB1 right upper ProximaNovaA-Light" href="/Category/Index/@Model.CollectionId?Menu=Collection">
+                @if (Model.ShopTheCollectionTextColor == "")
+                {
+                    <div class="bs_fill_white_collections transition"></div><span>Shop the collection</span>
+                }
+                else
+                {
+                    <div class="bs_fill_white_collections transition"></div><span style="color:@Model.ShopTheCollectionTextColor">Shop the collection</span>
+                }
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="collectionsSlide2 width-100">
+    <div class="safearea">
+        @if (@Model.PageImage1 != null || @Model.PageImage2 != null)
+        {
+            <div class="ArrowSlide2Left">
+                @if (@Model.PageImage1 != null)
+                {
+                    <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/@Model.PageImage1" />
+                }
+                @if (@Model.PageImage2 != null)
+                {
+                    <img class="lookbook_w100_image arrowLookbook3 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/@Model.PageImage2" />
+                }
+            </div>
+        }
+        @if (@Model.PageImage3 != null)
+        {
+            <div class="ArrowSlide2Right right">
+                <img class="lookbook_w100_image arrowLookbook4 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/@Model.PageImage3" />
+            </div>
+        }
+
+        @if (@Model.PageImage4 != null)
+        {
+            <div class="ArrowCollectionText1 center_left anim_opacity0 transition2" style="background-image: url('../../Assets/Images/AllCollection/@Model.PageImage4')">
+                <article class="left center_left ProximaNovaA-Regular">
+                    @Model.AboutText
+                </article>
+            </div>
+        }
+    </div>
+</div>
+<div class="collectionsSlide2 width-100">
+    <div class="safearea">
+        @if (@Model.PageImage5 != null || @Model.PageImage6 != null)
+        {
+            <div class="ArrowSlide2Left">
+                @if (@Model.PageImage5 != null)
+                {
+                    <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/@Model.PageImage5" />
+                }
+                @if (@Model.PageImage6 != null)
+                {
+                    <img class="lookbook_w100_image arrowLookbook6 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/@Model.PageImage6" />
+                }
+            </div>
+        }
+        @if (@Model.PageImage7 != null)
+        {
+            <div class="ArrowSlide2Right right">
+                <img class="lookbook_w100_image arrowLookbook7 anim_opacity0 transition2" src="../../Assets/Images/AllCollection/@Model.PageImage7" />
+            </div>
+        }
+
+        @if (@Model.PageImage8 != null)
+        {
+            <img class="lookbook_w100_image anim_opacity0 transition2" src="../../Assets/Images/AllCollection/@Model.PageImage8" />
+        }
+    </div>
+</div>
+
+<div class="homepage_centered_section">
+    <div class="safearea">
+        <div class="collectionCheckContainer width-100">
+            <a href="/Category/Index/@Model.CollectionId?Menu=Collection" class="collectionShop center_left upper CormorantRegular">
+                <div class="bs_fill_dark_orange_collections transition"></div>shop the collection
+            </a>
+        </div>
+        <div class="hbox11" style="margin-bottom: 24px;">
+            <div class="hbox11_holder center_both">
+                <div class="hbox11_quote_blurred">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="hbox11_quote">“ Zoughaib &amp; Co’s master pieces are deﬁned by brilliant design and unparalleled craftsmanship ”</div>
+                <div class="doumit_signature"></div>
+            </div><!--hbox11_holder-->
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")

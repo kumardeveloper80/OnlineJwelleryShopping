@@ -1,0 +1,77 @@
+﻿@model Zoughaibandco.ViewModel.Contact_VM
+@{
+    ViewBag.Title = "EditMessage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="topContainer">
+    <div class="toolbar">
+        <div class="buttons">
+        </div>
+    </div>
+</div>
+
+<div>
+
+    @using (Html.BeginForm("UpdateHelpMessage", "Admin", FormMethod.Post))
+    {
+        <style type="text/css">
+            #flashContent1 {
+                height: 30px;
+                width: 243px;
+                z-index: 0;
+            }
+        </style>
+        <fieldset>
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="editor-label">
+                <label for="Email">Email</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.Email)
+            </div>
+
+            <div class="editor-label">
+                <label for="phone">Phone</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.Phone)
+            </div>
+
+            <div class="editor-label">
+                <label for="fullName">First Name</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.FirstName)
+            </div>
+
+            <div class="editor-label">
+                <label for="fullName">Last Name</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.LastName)
+            </div>
+
+            <div class="editor-label">
+                <label for="description">Message</label>
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(x => x.Messsage, new { @class = "ckeditor" })
+            </div>
+
+            <div class="editor-label">
+                <label for="isPublished">Is Published</label>
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(x => x.IsPublished)
+            </div>
+
+            <p>
+                <input type="submit" class="buttonSave" value="Save">
+            </p>
+        </fieldset>
+    }
+</div>
+
+<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>

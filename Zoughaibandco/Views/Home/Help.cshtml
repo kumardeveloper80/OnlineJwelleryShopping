@@ -1,0 +1,37 @@
+﻿<div class="RestOfPagesWrapper width-100">
+    <div class="createAccountSafe left center_left">
+        <h2 class="width-100 center upper CormorantRegular">need help?</h2>
+        <h3 class="width-100 center upper ProximaNovaA-Light" style="text-transform: none;">For assistance please complete the following form and our team will get<br /> back to you as soon as we can!</h3>
+
+        <form id="helpForm" name="helpForm" onsubmit="return false" class="width-100">
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light" id="firstNameLabel">First Name*</label>
+                <input id="firstName" name="firstName" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light" id="lastNameLabel">Last Name*</label>
+                <input id="lastName" name="lastName" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField left">
+                <label class="left ProximaNovaA-Light" id="emailLabel">Email*</label>
+                <input id="email" name="email" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField right">
+                <label class="left ProximaNovaA-Light">Phone Number</label>
+                <input id="phone" name="phone" type="text" class="ProximaNovaA-Regular left" />
+            </div>
+            <div class="formField100 left" style="width:100%; margin-top: 35px;">
+                <label id="helpMessageLabel" style="color: #75797b;font-size: 13px;margin-bottom: 5px;" class="left ProximaNovaA-Light">Message*</label>
+                <textarea id="helpMessage" name="helpMessage" class="ProximaNovaA-Regular left"></textarea>
+            </div>
+            <div class="formButtons left center_left">
+                <input type="reset" class="left ProximaNovaA-Semibold cursor" value="CANCEL" onclick="onCancel()"/>
+                <input onclick="onSubmit()" type="submit" class="left transition ProximaNovaA-Semibold cursor" value="SUBMIT" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+@Scripts.Render("~/NeedHelp")

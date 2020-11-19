@@ -1,0 +1,94 @@
+﻿@model List<Zoughaibandco.ViewModel.Order_VM>
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<link href="~/Content/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<div class="list">
+
+    <div class="filtering" style="color: #d37137; height: 20px; margin-top: 20px; margin-bottom: 19px; padding-left: 50px;">
+        <div style="float: left; margin-right: 55px; cursor:default;"><u>Filter by:</u></div>
+    </div>
+
+    <div class="filtering" style="color: #d37137; height: 20px; margin-top: 20px; margin-bottom: 19px; padding-left: 50px;">
+        <div style="float: left;width:50%">
+            Payment Type
+        </div>
+        <div style="float: right;width:50%">
+            <div style="float: left; margin-right: 55px;width:25%">
+                Start Date
+            </div>
+            <div style="float: left; margin-right: 30px; cursor: pointer;width:25%">
+                End Date
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="filtering" style="color: #d37137; height: 20px; margin-top: 20px; margin-bottom: 19px; padding-left: 50px;">
+
+        <form name="filterForm" id="filterForm">
+            <div style="float: left; cursor: pointer;width:50%" ">
+                <select style="width:150px" onchange="onPaymentTypeChange(this.value)" id="paymentType">
+                    <option value="ALL">All</option>
+                    <option value="@Zoughaibandco.ViewModel.PaymentType.COD.ToString()">@Zoughaibandco.ViewModel.PaymentType.COD.ToString()</option>
+                    <option value="@Zoughaibandco.ViewModel.PaymentType.ONLINE.ToString()">@Zoughaibandco.ViewModel.PaymentType.ONLINE.ToString()</option>
+                </select>
+            </div>
+
+            <div style="float: right; cursor: pointer;width:50%">
+                <div style="float: left; margin-right: 55px; cursor: pointer;width:25%">
+                    <div class="editor-field">
+                        <input type="text" id="startDate" class="ProximaNovaA-Regular left" readonly="readonly" />
+                    </div>
+                </div>
+
+                <div style="float: left; margin-right: 55px; cursor: pointer;width:25%">
+                    <div class="editor-field">
+                        <input type="text" id="endDate" class="ProximaNovaA-Regular left" readonly="readonly" />
+                    </div>
+                </div>
+
+                <div style="float: left; margin-right: 10px; cursor: pointer;width:10%">
+                    <div class="editor-field">
+                        <input type="button" class="button" id="addItem" value="Submit" onclick="onSubmit()">
+                    </div>
+                </div>
+
+                <div style="float: left; cursor: pointer;width:10%">
+                    <div class="editor-field">
+                        <input type="reset" class="button" id="addItem" value="Reset" onclick="onReset()">
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+      
+    </div>
+
+    <div id="orderListDiv" style="color:black;">
+
+    </div>
+    
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/Custom")
+<script>
+    $(document).ready(function () {
+        $('#startDate').datepicker({
+            dateFormat: 'dd-mm-yy',
+            maxDate: new Date()
+        });
+        $('#endDate').datepicker({
+            dateFormat: 'dd-mm-yy',
+            maxDate: new Date()
+        });
+    });
+
+</script>
+<script src="/Scripts/Admin/Order.js"></script>

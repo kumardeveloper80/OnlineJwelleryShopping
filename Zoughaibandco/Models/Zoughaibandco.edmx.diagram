@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="45cb9c3ee2324685b9587cf6c9278471" Name="Diagram1" ZoomLevel="50">
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Contact" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Career" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.StoreAddress" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.StoreLocator" Width="1.5" PointX="0.75" PointY="5.375" />
+        <AssociationConnector Association="Zoughaibandco_DBModel.FK_StoreAddress_StoreLocator" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Banner" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Client" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Collection" Width="1.5" PointX="7.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Color" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Picture" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.SubCategory" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Category" Width="1.5" PointX="7.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.ProductWishList" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.ProductCartDetail" Width="2.375" PointX="4.125" PointY="10.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.ProductCart" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Admin" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.EGiftCard" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Order" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.OrderDeliveryDetail" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.ProductCartDetailsGuest" Width="2.5" PointX="14.25" PointY="0.875" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.ProductCartGuest" Width="2.5" PointX="13.875" PointY="3" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.ProductWishListGuest" Width="2.125" PointX="14.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.OrderDetail" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Zoughaibandco_DBModel.Product" Width="1.5" PointX="0.75" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

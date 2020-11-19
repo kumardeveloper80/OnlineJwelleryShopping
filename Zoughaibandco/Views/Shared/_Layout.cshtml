@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="Born out of passion for commemorating beauty through timeless designs, Zoughaib &amp; Co positions itself as a leading &amp; trendsetter jewelry design house." />
+    <meta name="keywords" content="Zoughaib, jewelry" />
+    <link type="image/x-icon" href="~/Assets/Images/Logo/favicon.png" rel="shortcut icon">
+    <title>
+        Zoughaib & Co Jewelry
+    </title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div>
+        @Html.Partial("Header_PartilaView")
+    </div>
+
+    <div>
+        <section>
+            @RenderBody()
+        </section>
+        <footer>
+            @Html.Partial("Footer_PartialView")
+        </footer>
+    </div>
+
+    <div class="ajax-loader">
+        <img src="~/Assets/Images/Others/giphy.gif" class="img-responsive" />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/Custom")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

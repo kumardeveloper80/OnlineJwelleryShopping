@@ -1,0 +1,62 @@
+﻿@model Zoughaibandco.ViewModel.PaymentConfiguration
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Scripts/jquery10.js"></script>
+</head>
+<body>
+    <div>
+        <form id="payment_confirmation" action="@Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["PaymentUrl"])" method="post" name="payment_confirmation">
+            @{
+                try
+                {
+                    IDictionary<string, string> parameters = new Dictionary<string, string>();
+                    <input type="hidden" value="@Model.access_key" id="access_key" name="access_key" />
+                    <input type="hidden" value="@Model.profile_id" id="profile_id" name="profile_id" />
+                    <input type="hidden" value="@Model.transaction_uuid" id="transaction_uuid" name="transaction_uuid" />
+                    <input type="hidden" value="@Model.signed_field_names" id="signed_field_names" name="signed_field_names" />
+                    <input type="hidden" value="@Model.unsigned_field_names" id="unsigned_field_names" name="unsigned_field_names" />
+                    <input type="hidden" value="@Model.signed_date_time" id="signed_date_time" name="signed_date_time" />
+                    <input type="hidden" value="@Model.locale" id="locale" name="locale" />
+                    <input type="hidden" value="@Model.transaction_type" id="transaction_type" name="transaction_type" />
+                    <input type="hidden" value="@Model.reference_number" id="reference_number" name="reference_number" />
+                    <input type="hidden" value="@Model.amount" id="amount" name="amount" />
+                    <input type="hidden" value="@Model.currency" id="currency" name="currency" />
+
+                    parameters.Add("access_key", Model.access_key);
+                    parameters.Add("profile_id", Model.profile_id);
+                    parameters.Add("transaction_uuid", Model.transaction_uuid);
+                    parameters.Add("signed_field_names", Model.signed_field_names);
+                    parameters.Add("unsigned_field_names", Model.unsigned_field_names);
+                    parameters.Add("signed_date_time", Model.signed_date_time);
+                    parameters.Add("locale", Model.locale);
+                    parameters.Add("transaction_type", Model.transaction_type);
+                    parameters.Add("reference_number", Model.reference_number);
+                    parameters.Add("currency", Model.currency);
+                    parameters.Add("amount", Model.amount.ToString());
+                    parameters.Add("submit", "Submit");
+
+                    <input type="hidden" value="@Zoughaibandco.Security.sign(parameters)" id="signature" name="signature" />
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#payment_confirmation").submit();
+        });
+    </script>
+</body>
+</html>
